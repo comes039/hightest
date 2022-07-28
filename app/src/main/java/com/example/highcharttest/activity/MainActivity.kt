@@ -1,7 +1,8 @@
-package com.example.highcharttest
+package com.example.highcharttest.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.highcharttest.R
 import com.highsoft.highcharts.common.hichartsclasses.*
 import com.highsoft.highcharts.core.HIChartView
 
