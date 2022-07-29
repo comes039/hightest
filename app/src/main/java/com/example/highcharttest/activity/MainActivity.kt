@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
         map6["y"] = 0.2
         map6["drilldown"] = null
 
-        val series1_data: Array<java.util.HashMap<String, out Any?>> =
-            arrayOf(map1, map2, map3, map4, map5, map6)
+        val series1Map: List<HashMap<String, out Any?>> =
+            listOf(map1, map2, map3, map4, map5, map6)
         // 옵션에 시리즈 추가 -> 옵션에는 시리즈를 여러개 등록할수 있다.
-        series1.data = ArrayList(listOf(series1_data))
+        series1.data = ArrayList(series1Map)
         options.series = ArrayList(listOf(series1))
 
         // chartView 옵션 추가
