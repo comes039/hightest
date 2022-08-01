@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
         plotOptions.series.dataLabels = ArrayList(Collections.singletonList(dataLabels))
         options.plotOptions = plotOptions
         // HITooltip 설정
-        val toolTipBackgroundColor = HIColor.initWithHexValue("161b22")
         val tooltip = HITooltip()
+        val toolTipBackgroundColor = HIColor.initWithHexValue("161b22")
         tooltip.borderColor = HIColor.initWithHexValue("00ff0000")
         tooltip.borderRadius = 8
         tooltip.shadow = HIShadowOptionsObject()
