@@ -1,6 +1,7 @@
 package com.example.highcharttest.chart.data
 
 class GradientColor(
-    val start: RGBAColor,
-    val end: RGBAColor
+    // ex) #FFFFFF
+    val start: String,
+    val end: String
 )
