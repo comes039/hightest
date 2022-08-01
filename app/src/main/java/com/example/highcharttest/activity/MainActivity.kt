@@ -3,10 +3,10 @@ package com.example.highcharttest.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.highcharttest.R
+import com.highsoft.highcharts.common.HIColor
 import com.highsoft.highcharts.common.hichartsclasses.*
 import com.highsoft.highcharts.core.HIChartView
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val chartView = findViewById<HIChartView>(R.id.hc)
-        chartView.theme = "brand-light"
+        chartView.plugins = ArrayList(listOf("drilldown"))
+//        chartView.theme = "brand-light"
         // HIOptions 클래스 의 인스턴스 만들기
         val options = HIOptions()
         // HIChart 차트 유형설정하기
@@ -33,20 +34,44 @@ class MainActivity : AppCompatActivity() {
         // HIChart X축설정
         val xAxis = HIXAxis()
         xAxis.type = "category"
-        options.xAxis = object : ArrayList<HIXAxis?>() {
-            init {
-                add(xAxis)
-            }
-        }
+        options.xAxis = ArrayList(Collections.singletonList(xAxis))
         // HIChart Y축설정
         val yAxis = HIYAxis()
         yAxis.title = HITitle()
         yAxis.title.text = "Total percent market share"
-        options.yAxis = object : ArrayList<HIYAxis?>() {
-            init {
-                add(yAxis)
-            }
-        }
+//        yAxis.visible = columnData.yAxis.visible
+//        yAxis.opposite = columnData.yAxis.opposite
+//        yAxis.title = HITitle()
+//        yAxis.title.apply {
+//            text = columnData.yAxis.titleText
+//            align = "high"
+//            offset = 0
+//            rotation = 0
+//            y = -10
+//        }
+//        yAxis.tickInterval = columnData.yAxis.tickInterval
+//        yAxis.gridLineWidth = columnData.yAxis.gridLineWidth
+//        yAxis.gridLineDashStyle = columnData.yAxis.gridLineDashStyle
+//        if (columnData.yAxis.plotLine != null) {
+//            val plotLine = HIPlotLines()
+//            plotLine.apply {
+//                zIndex = 200
+//                dashStyle = columnData.yAxis.plotLine.dashStyle
+//                color = "#${columnData.yAxis.plotLine.lineColor}"
+//                width = columnData.yAxis.plotLine.lineWidth
+//                value = columnData.yAxis.plotLine.lineValue
+//                label = HILabel()
+//                label.apply {
+//                    align = columnData.yAxis.plotLine.labelAlign
+//                    text = columnData.yAxis.plotLine.labelText
+//                    style = HICSSObject()
+//                    style.color =
+//                        HIColor.initWithHexValue(columnData.yAxis.plotLine.labelColor)
+//                }
+//            }
+//            yAxis.plotLines = arrayListOf(plotLine)
+//        }
+        options.yAxis = ArrayList(Collections.singletonList(yAxis))
         // HILegend 설정
         val legend = HILegend()
         legend.enabled = false
@@ -57,17 +82,15 @@ class MainActivity : AppCompatActivity() {
         val dataLabels = HIDataLabels();
         dataLabels.enabled = true
         dataLabels.format = "{point.y:.1f}%"
-        plotOptions.series.dataLabels = object : ArrayList<HIDataLabels>() {
-            init {
-                add(dataLabels)
-            }
-        }
+        plotOptions.series.dataLabels = ArrayList(Collections.singletonList(dataLabels))
         options.plotOptions = plotOptions
         // HITooltip 설정
+        val toolTipBackgroundColor = HIColor.initWithHexValue("#161b22")
         val tooltip = HITooltip()
-        tooltip.headerFormat = "<span style=\"font-size:11px\">{series.name}</span><br>"
+        tooltip.backgroundColor = toolTipBackgroundColor
+        tooltip.headerFormat = "<span style=\"color:{point.color} font-size:11px\">{series.name}</span><br>"
         tooltip.pointFormat =
-            "<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>"
+            "<span style=\"color:{point.color}\">{point.name}: {point.y:.2f}% of total</span><br/>"
         options.tooltip = tooltip
         // 테스트 데이터 추가
         val series1 = HIColumn()
