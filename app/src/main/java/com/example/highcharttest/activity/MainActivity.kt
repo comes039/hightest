@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.highcharttest.R
 import com.highsoft.highcharts.common.HIColor
+import com.highsoft.highcharts.common.HIGradient
+import com.highsoft.highcharts.common.HIStop
 import com.highsoft.highcharts.common.hichartsclasses.*
 import com.highsoft.highcharts.core.HIChartView
 import java.util.*
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val chartView = findViewById<HIChartView>(R.id.hc)
         chartView.plugins = ArrayList(listOf("drilldown"))
+        chartView.addFont(R.font.dmsans_regular)
 //        chartView.theme = "brand-light"
         // HIOptions 클래스 의 인스턴스 만들기
         val options = HIOptions()
@@ -94,8 +97,13 @@ class MainActivity : AppCompatActivity() {
         options.tooltip = tooltip
         // 테스트 데이터 추가
         val series1 = HIColumn()
+        val hiGradient = HIGradient(0F, 0F, 0F, 1F)
+        val stops: LinkedList<HIStop> = LinkedList()
+        stops.add(HIStop(0f, HIColor.initWithHexValue("F55C5C")))
+        stops.add(HIStop(1f, HIColor.initWithHexValue("F08B8B")))
         series1.name = "Brands"
-        series1.colorByPoint = true
+        series1.color = HIColor.initWithLinearGradient(hiGradient,stops)
+        series1.colorByPoint = false
 
         val map1: HashMap<String, Any> = HashMap()
         map1["name"] = "Microsoft Internet Explorer"
