@@ -95,7 +95,7 @@ class ColumnChart {
             maxData.y = maxValue
             maxData.color = HIColor.initWithHexValue(columnData.maxColor)
 
-            val dataList = java.util.ArrayList<Any>()
+            val dataList = ArrayList<Any>()
             columnData.inputData.forEach {
                 when (it) {
                     minValue -> {
