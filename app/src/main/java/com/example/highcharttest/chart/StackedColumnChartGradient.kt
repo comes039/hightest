@@ -57,7 +57,7 @@ class StackedColumnChartGradient {
                 "<span style=\"color:#888888;font-size:10px\">{series.name}</span><br>"
             tooltip.pointFormat =
                 "<span style=\"color:{point.color};font-size:12px;font-weight:bold\">• </span>" +
-                        "<span style=\"color:#FFFFFF;font-size:12px;font-weight:500\">{point.y:.2f}</span>"
+                        "<span style=\"color:#FFFFFF;font-size:12px;font-weight:500\">{point.y:.2f}</span><br>"
 
             options.tooltip = tooltip
             // xAxis
@@ -95,7 +95,6 @@ class StackedColumnChartGradient {
                 column.color = HIColor.initWithLinearGradient(HIGradient(), stops)
                 column.colorByPoint = false
                 column.stack = "seizure"
-                column.name = "Nov 6, 2022"
                 dataList.add(column)
             }
             options.series = dataList
