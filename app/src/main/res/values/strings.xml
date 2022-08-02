@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">highChartTest</string>
-    <string name="bubble_chart">Bubble Chart</string>
+    <string name="stacked_column_chart">Stacked Column Chart</string>
 </resources>
