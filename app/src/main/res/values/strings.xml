@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">highChartTest</string>
+    <string name="bubble_chart">Bubble Chart</string>
 </resources>

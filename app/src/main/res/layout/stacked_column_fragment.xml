@@ -5,22 +5,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/bubble_chart"
-            android:textSize="50sp"
-            android:textAlignment="center"
-            />
-    <FrameLayout
-            android:id="@+id/hc_fragment"
+            android:layout_marginTop="130dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
+    <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/stacked_column_chart"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.356" />
+            app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
