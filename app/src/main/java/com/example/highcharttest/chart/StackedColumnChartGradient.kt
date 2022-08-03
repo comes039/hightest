@@ -44,6 +44,7 @@ class StackedColumnChartGradient {
             // tooltip
             val tooltip = HITooltip()
             tooltip.shared = true
+            tooltip.useHTML = true
             val toolTipBackgroundColor = HIColor.initWithHexValue("161b22")
             tooltip.borderColor = HIColor.initWithHexValue("00ff0000")
             tooltip.borderRadius = 8

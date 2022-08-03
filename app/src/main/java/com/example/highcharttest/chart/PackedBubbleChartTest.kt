@@ -1,15 +1,18 @@
 package com.example.highcharttest.chart
 
 import com.example.highcharttest.chart.data.HCData
+import com.example.highcharttest.chart.data.HCDataGradient
 import com.highsoft.highcharts.common.HIColor
+import com.highsoft.highcharts.common.HIGradient
+import com.highsoft.highcharts.common.HIStop
 import com.highsoft.highcharts.common.hichartsclasses.*
+import java.util.*
 
-class PackedBubbleChart {
+class PackedBubbleChartTest {
 
     companion object {
 
-
-        fun options(inputData: List<HCData>): HIOptions {
+        fun options(inputData: List<HCDataGradient>): HIOptions {
             val options = HIOptions()
 
             // export menu
@@ -43,8 +46,10 @@ class PackedBubbleChart {
             val dataLabels = HIDataLabels()
             dataLabels.apply {
                 enabled = true
-                format = "{point.percentage:.1f} %"
-//                format = "{point.value}"
+                verticalAlign = "middle"
+                align = "center"
+                format = "Aura confirmed<br><span style=\"color:#000000;font-size:24px;font-weight:500\">{point.x:.1f}%</span>"
+
                 style = HIStyle()
                 style.apply {
                     color = "white"
@@ -55,6 +60,7 @@ class PackedBubbleChart {
 
             val plotoptions = HIPlotOptions()
             plotoptions.packedbubble = HIPackedbubble()
+            plotoptions.packedbubble.stacking = "percent"
             plotoptions.packedbubble.dataLabels = arrayListOf(dataLabels)
             options.plotOptions = plotoptions
 
@@ -62,11 +68,19 @@ class PackedBubbleChart {
             packedBubble.name = "Seizures"
 
             val dataList = ArrayList<HIData>()
+            val sumValue = inputData.map{ v->v.value}.sumOf { it.toInt() }
+
+
+
             inputData.forEach {
                 val data = HIData()
                 data.name = it.name
                 data.value = it.value
-                data.color = HIColor.initWithHexValue(it.color)
+//                data.x = (it.value / sumValue).
+                val stops = LinkedList<HIStop>()
+                stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
+                stops.add(HIStop(1f, HIColor.initWithHexValue(it.color.end)))
+                data.color = HIColor.initWithLinearGradient(HIGradient(), stops)
                 dataList.add(data)
             }
             packedBubble.data = dataList
