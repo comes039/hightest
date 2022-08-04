@@ -5,10 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.example.highcharttest.R
 import com.example.highcharttest.chart.StackedColumnChartGradient
 import com.example.highcharttest.chart.data.GradientColor
@@ -16,7 +12,6 @@ import com.example.highcharttest.chart.data.HCDataValueList
 import com.example.highcharttest.chart.data.HCXAxis
 import com.example.highcharttest.chart.data.HCYAxis
 import com.example.highcharttest.databinding.StackedColumnFragmentBinding
-import com.google.android.material.tabs.TabLayoutMediator
 
 class StackedColumnFragment : Fragment() {
     private lateinit var binding: StackedColumnFragmentBinding
@@ -47,7 +42,8 @@ class StackedColumnFragment : Fragment() {
         val otherList = HCDataValueList("other", other, GradientColor("E9E9E9", "E9E9E9"))
         val inputData: List<HCDataValueList> =
             listOf(generalizedList, focalList, combinedList, otherList).reversed()
-        binding.stackedColumnChart.options = StackedColumnChartGradient.options(hcxAxis, hcyAxis, inputData)
+        binding.stackedColumnChart.options =
+            StackedColumnChartGradient.options(hcxAxis, hcyAxis, inputData)
     }
 
 }

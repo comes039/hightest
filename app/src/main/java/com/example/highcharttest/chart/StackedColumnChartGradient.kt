@@ -52,10 +52,10 @@ class StackedColumnChartGradient {
             tooltip.shadow.width = 0
             tooltip.style = HICSSObject()
             tooltip.style.width = 76
-            tooltip.style.color = HIColor.initWithHexValue("FFFFFF")
+//            tooltip.style.color = HIColor.initWithHexValue("FFFFFF")
             tooltip.backgroundColor = toolTipBackgroundColor
-            tooltip.headerFormat =
-                "<span style=\"color:#888888;font-size:10px\">{series.name}</span><br>"
+//            tooltip.headerFormat =
+//                "<span style=\"color:#888888;font-size:10px\">{series.name}</span><br>"
             tooltip.pointFormat =
                 "<span style=\"color:{point.color};font-size:12px;font-weight:bold\">• </span>" +
                         "<span style=\"color:#FFFFFF;font-size:12px;font-weight:500\">{point.y:.2f}</span><br>"

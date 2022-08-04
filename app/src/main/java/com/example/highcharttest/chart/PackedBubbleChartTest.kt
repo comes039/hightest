@@ -1,12 +1,13 @@
 package com.example.highcharttest.chart
 
-import com.example.highcharttest.chart.data.HCData
 import com.example.highcharttest.chart.data.HCDataGradient
 import com.highsoft.highcharts.common.HIColor
 import com.highsoft.highcharts.common.HIGradient
 import com.highsoft.highcharts.common.HIStop
 import com.highsoft.highcharts.common.hichartsclasses.*
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class PackedBubbleChartTest {
 
@@ -29,7 +30,10 @@ class PackedBubbleChartTest {
 
             val chart = HIChart()
             chart.type = "packedbubble"
+            chart.style = HICSSObject()
+//            chart.style.fontFamily = "dmsans_regular"
             chart.height = "100%"
+
 //            chart.width = "100%"
             options.chart = chart
 
@@ -43,7 +47,21 @@ class PackedBubbleChartTest {
 
             val tooltip = HITooltip()
             tooltip.useHTML = true
-            tooltip.pointFormat = "<b>{point.name}:</b> {point.x}"
+            tooltip.backgroundColor = HIColor.initWithHexValue("000000")
+            tooltip.borderWidth = 0
+            tooltip.borderRadius = 8
+            tooltip.shadow = HIShadowOptionsObject()
+            tooltip.shadow.width = 0
+            tooltip.style = HICSSObject()
+            tooltip.style.width = 96
+            tooltip.style.height = 48
+            tooltip.style.color = HIColor.initWithHexValue("888888")
+            tooltip.style.fontSize = "10px"
+            tooltip.headerFormat = ""
+//            tooltip.formatter
+            tooltip.pointFormat = "<div>{point.name}</div><div style=\"text-align:center\">" +
+                    "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
+                    "<span style=\"font-size:12px;color:#FFFFFF\">{point.custom.value} seizures</span></div> "
             options.tooltip = tooltip
 
             val dataLabels = HIDataLabels()
@@ -52,11 +70,12 @@ class PackedBubbleChartTest {
                 verticalAlign = "middle"
                 align = "center"
                 useHTML = true
-                format = "<div style=\"text-align:center;height:{point.x2}px\">" +
-                        "<span style=\"font-size:{point.x2}px\">Aura confirmed</span>" +
+                zIndex = 0
+                format = "<div style=\"text-align:center;height:{point.custom.header_size}px\">" +
+                        "<span style=\"font-size:{point.custom.header_size}px\">{point.name}</span>" +
                         "</div>" +
                         "<div style=\"text-align:center\">" +
-                        "<span style=\"font-size:{point.z}px;font-weight:500;\">" +
+                        "<span style=\"font-size:{point.custom.point_size}px;font-weight:500;\">" +
                         "{point.value:.0f}%</span>" +
                         "</div>"
                 filter = HIFilter()
@@ -92,12 +111,16 @@ class PackedBubbleChartTest {
                 data.name = it.name
                 // 퍼센트
                 data.value = (it.value.toFloat() / sumValue.toFloat()) * 100
-                //값
-                data.x = it.value
-                // Aura confirmed 글자크기 설정값 -> 최대크기만 표시
-                data.x2 = if (it.value == maxValue) 12 else 0
-                // 퍼센트 글자크기 설정값
-                data.z = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
+                data.custom = HashMap<String,Any>()
+                data.custom["value"] = it.value
+                data.custom["header_size"] =  if (it.value == maxValue) 12 else 0
+                data.custom["point_size"] = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
+//                //값
+//                data.x = it.value
+//                // Aura confirmed 글자크기 설정값 -> 최대크기만 표시
+//                data.q3 = if (it.value == maxValue) 12 else 0
+//                // 퍼센트 글자크기 설정값
+//                data.q1 = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
                 stops.add(HIStop(1f, HIColor.initWithHexValue(it.color.end)))
