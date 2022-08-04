@@ -18,6 +18,8 @@ class PackedBubbleChartTest {
             // export menu
             val exporting = HIExporting()
             exporting.enabled = false
+            // html 태그 허용설정
+            exporting.allowHTML = true
             options.exporting = exporting
 
             // credits
@@ -28,6 +30,7 @@ class PackedBubbleChartTest {
             val chart = HIChart()
             chart.type = "packedbubble"
             chart.height = "100%"
+//            chart.width = "100%"
             options.chart = chart
 
             val title = HITitle()
@@ -40,7 +43,7 @@ class PackedBubbleChartTest {
 
             val tooltip = HITooltip()
             tooltip.useHTML = true
-            tooltip.pointFormat = "<b>{point.name}:</b> {point.y}"
+            tooltip.pointFormat = "<b>{point.name}:</b> {point.x}"
             options.tooltip = tooltip
 
             val dataLabels = HIDataLabels()
@@ -48,8 +51,20 @@ class PackedBubbleChartTest {
                 enabled = true
                 verticalAlign = "middle"
                 align = "center"
-                format = "Aura confirmed<br><span style=\"color:#000000;font-size:24px;font-weight:500\">{point.x:.1f}%</span>"
-
+                useHTML = true
+                format = "<div style=\"text-align:center;height:{point.x2}px\">" +
+                        "<span style=\"font-size:{point.x2}px\">Aura confirmed</span>" +
+                        "</div>" +
+                        "<div style=\"text-align:center\">" +
+                        "<span style=\"font-size:{point.z}px;font-weight:500;\">" +
+                        "{point.value:.0f}%</span>" +
+                        "</div>"
+                filter = HIFilter()
+                filter.apply {
+                    property = "value"
+                    operator = ">"
+                    value = 15
+                }
                 style = HIStyle()
                 style.apply {
                     color = "white"
@@ -69,14 +84,20 @@ class PackedBubbleChartTest {
 
             val dataList = ArrayList<HIData>()
             val sumValue = inputData.map{ v->v.value}.sumOf { it.toInt() }
-
-
+            val minValue = inputData.map{ v->v.value}.minOf { it.toInt() }
+            val maxValue = inputData.map{ v->v.value}.maxOf { it.toInt() }
 
             inputData.forEach {
                 val data = HIData()
                 data.name = it.name
-                data.value = it.value
-//                data.x = (it.value / sumValue).
+                // 퍼센트
+                data.value = (it.value.toFloat() / sumValue.toFloat()) * 100
+                //값
+                data.x = it.value
+                // Aura confirmed 글자크기 설정값 -> 최대크기만 표시
+                data.x2 = if (it.value == maxValue) 12 else 0
+                // 퍼센트 글자크기 설정값
+                data.z = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
                 stops.add(HIStop(1f, HIColor.initWithHexValue(it.color.end)))
@@ -85,6 +106,13 @@ class PackedBubbleChartTest {
             }
             packedBubble.data = dataList
             packedBubble.layoutAlgorithm = HILayoutAlgorithm()
+            // width 대비 비율로 계산해야함
+            packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 300
+            packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 300
+            packedBubble.marker = HIMarker()
+            // 테두리 설정
+            packedBubble.marker.lineWidth = 0
+
             options.series = arrayListOf(packedBubble)
 
             val responsive = HIResponsive()
