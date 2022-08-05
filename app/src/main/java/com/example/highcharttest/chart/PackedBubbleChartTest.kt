@@ -163,6 +163,7 @@ class PackedBubbleChartTest {
             }
             packedBubble.data = dataList
             packedBubble.layoutAlgorithm = HILayoutAlgorithm()
+            packedBubble.layoutAlgorithm.gravitationalConstant = 0.02
             // width 대비 비율로 계산해야함
             packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 300
             packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 300
@@ -172,19 +173,19 @@ class PackedBubbleChartTest {
 
             options.series = arrayListOf(packedBubble)
 
-//            val responsive = HIResponsive()
-//            val rule = HIRules()
-//            rule.condition = HICondition()
-//            rule.condition.maxHeight = 300
-//            val ruleOptions = HashMap<String, HashMap<String, String>>()
-//            val legendRules = HashMap<String, String>()
-//            legendRules.put("align", "left")
-//            legendRules.put("verticalAlign", "middle")
-//            legendRules.put("layout", "vertical")
-//            ruleOptions.put("legend", legendRules)
-//            rule.chartOptions = ruleOptions
-//            responsive.rules = arrayListOf(rule)
-//            options.responsive = responsive
+            val responsive = HIResponsive()
+            val rule = HIRules()
+            rule.condition = HICondition()
+            rule.condition.maxHeight = 300
+            val ruleOptions = HashMap<String, HashMap<String, String>>()
+            val legendRules = HashMap<String, String>()
+            legendRules.put("align", "left")
+            legendRules.put("verticalAlign", "middle")
+            legendRules.put("layout", "vertical")
+            ruleOptions.put("legend", legendRules)
+            rule.chartOptions = ruleOptions
+            responsive.rules = arrayListOf(rule)
+            options.responsive = responsive
 
             return options
         }

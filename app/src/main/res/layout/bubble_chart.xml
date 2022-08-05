@@ -56,7 +56,7 @@
             <com.highsoft.highcharts.core.HIChartView
                     android:id="@+id/bubble_chart"
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
+                    android:layout_height="300dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:layout_marginLeft="30dp"
@@ -115,7 +115,7 @@
                 <!-- aura text-->
                 <TextView
                         android:id="@+id/aura_confir"
-                        android:layout_width="88dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="36dp"
@@ -129,7 +129,7 @@
                         android:gravity="top" />
                 <TextView
                         android:id="@+id/no_aura_con"
-                        android:layout_width="106dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="36dp"
@@ -144,7 +144,7 @@
                         />
                 <TextView
                         android:id="@+id/aura_unknown"
-                        android:layout_width="106dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="36dp"
@@ -159,7 +159,7 @@
                         />
                 <TextView
                         android:id="@+id/no_record"
-                        android:layout_width="106dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="36dp"
@@ -175,7 +175,7 @@
                 <!--seizures text-->
                 <TextView
                         android:id="@+id/seizures"
-                        android:layout_width="58dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
@@ -186,11 +186,11 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="right|top" />
+                        android:gravity="start" />
 
                 <TextView
                         android:id="@+id/seizures1"
-                        android:layout_width="58dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
@@ -201,11 +201,11 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="right|top" />
+                        android:gravity="start" />
 
                 <TextView
                         android:id="@+id/seizures2"
-                        android:layout_width="58dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
@@ -216,11 +216,11 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="right|top" />
+                        android:gravity="start" />
 
                 <TextView
                         android:id="@+id/seizures3"
-                        android:layout_width="58dp"
+                        android:layout_width="match_parent"
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
@@ -231,7 +231,7 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="right|top" />
+                        android:gravity="start" />
 
             </RelativeLayout>
 

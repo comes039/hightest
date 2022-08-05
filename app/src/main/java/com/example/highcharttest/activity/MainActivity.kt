@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = pagerAdapter
 
     }
+
     override fun onBackPressed() {
         if (viewPager.currentItem == 0) {
             // If the user is currently looking at the first step, allow the system to handle the
@@ -36,12 +37,13 @@ class MainActivity : AppCompatActivity() {
             viewPager.currentItem = viewPager.currentItem - 1
         }
     }
+
     /**
      * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in
      * sequence.
      */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        val fragmentList = listOf(StackedColumnFragment(),BubbleFragment())
+        val fragmentList = listOf(StackedColumnFragment(), BubbleFragment())
         override fun getItemCount(): Int = fragmentList.size
         override fun createFragment(position: Int): Fragment = fragmentList[position]
     }
