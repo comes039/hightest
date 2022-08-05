@@ -71,11 +71,19 @@ class PackedBubbleChartTest {
             tooltip.style.height = 48
             tooltip.style.color = HIColor.initWithHexValue("888888")
             tooltip.style.fontSize = "10px"
-            tooltip.headerFormat = ""
-//            tooltip.formatter
-            tooltip.pointFormat = "<div>{point.name}</div><div style=\"text-align:center\">" +
+//            tooltip.headerFormat = ""
+            tooltip.formatter = HIFunction("function(){" +
+                    "return '" +
+                    "<div style=\"z-index:100\">" +
+                    "<div>'+this.point.name+'</div><div style=\"text-align:center\">" +
                     "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
-                    "<span style=\"font-size:12px;color:#FFFFFF\">{point.custom.value} seizures</span></div> "
+                    "<span style=\"font-size:12px;color:#FFFFFF\">'+this.point.custom.value+' seizures</span></div>" +
+                    "</div>" +
+                    "'" +
+                    "}")
+//            tooltip.pointFormat = "<div>{point.name}</div><div style=\"text-align:center\">" +
+//                    "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
+//                    "<span style=\"font-size:12px;color:#FFFFFF\">{point.custom.value} seizures</span></div> "
             options.tooltip = tooltip
 
             val dataLabels = HIDataLabels()
@@ -84,23 +92,27 @@ class PackedBubbleChartTest {
                 verticalAlign = "middle"
                 align = "center"
                 useHTML = true
-                zIndex = -100000000000000000
-                format = "<div style=\"text-align:center;height:{point.custom.header_size}px\">" +
-                        "<span style=\"font-size:{point.custom.header_size}px\">{point.name}</span>" +
+//                format = "<div style=\"text-align:center;height:{point.custom.header_size}px\">" +
+//                        "<span style=\"font-size:{point.custom.header_size}px\">{point.name}</span>" +
+//                        "</div>" +
+//                        "<div style=\"text-align:center\">" +
+//                        "<span style=\"font-size:{point.custom.point_size}px;font-weight:500;\">" +
+//                        "{point.value:.0f}%</span>" +
+//                        "</div>"
+                formatter = HIFunction("function(){" +
+                        "return '" +
+                        "<div style = \"z-index: -1;\">" +
+                        "<div style=\"text-align:center;height:'+this.point.custom.header_size+'px;\">" +
+                        "<span style=\"font-size:'+this.point.custom.header_size+'px;\">" +
+                        "'+this.point.name+'</span>" +
                         "</div>" +
                         "<div style=\"text-align:center\">" +
-                        "<span style=\"font-size:{point.custom.point_size}px;font-weight:500;\">" +
-                        "{point.value:.0f}%</span>" +
-                        "</div>"
-//                formatter = HIFunction("function(){" +
-//                        "return '" +
-//                        "<span style=\"font-size:'+this.point.custom.header_size+'px;\">" +
-//                        "'+this.point.name+'</span>" +
-//                        "<br/>" +
-//                        "<span style=\"font-size:'+this.point.custom.point_size+'px;font-weight:500;\">" +
-//                        "'+Math.round(this.point.value)+'%</span>" +
-//                        "'" +
-//                        "}")
+                        "<span style=\"font-size:'+this.point.custom.point_size+'px;font-weight:500;\">" +
+                        "'+Math.round(this.point.value)+'%</span>" +
+                        "</div>" +
+                        "</div>" +
+                        "'" +
+                        "}")
                 filter = HIFilter()
                 filter.apply {
                     property = "value"
