@@ -1,13 +1,16 @@
 package com.example.highcharttest.chart
 
+import android.widget.Toast
 import com.example.highcharttest.chart.data.HCDataGradient
 import com.highsoft.highcharts.common.HIColor
 import com.highsoft.highcharts.common.HIGradient
 import com.highsoft.highcharts.common.HIStop
 import com.highsoft.highcharts.common.hichartsclasses.*
+import com.highsoft.highcharts.core.HIChartContext
+import com.highsoft.highcharts.core.HIConsumer
+import com.highsoft.highcharts.core.HIFunction
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+
 
 class PackedBubbleChartTest {
 
@@ -50,6 +53,17 @@ class PackedBubbleChartTest {
             tooltip.backgroundColor = HIColor.initWithHexValue("000000")
             tooltip.borderWidth = 0
             tooltip.borderRadius = 8
+//            tooltip.positioner = HIFunction("function (labelWidth, labelHeight, point) {" +
+//                    "let width = chart.yAxis;"+
+//                    "console.log(chart.plotLeft);"+
+//                    "console.log(point.property['y']);"+
+//                    "console.log(chart.yAxis);"+
+//                    "console.log(chart.plotTop);"+
+//                    "console.log('x : '+point.plotX);"+
+//                    "console.log('y : '+(260-point.plotY));"+
+//                    "console.log(labelHeight);"+
+//                    "return { x:point.plotX+10-labelWidth/2,y: point.plotY -labelHeight/2-50}; }");
+//
             tooltip.shadow = HIShadowOptionsObject()
             tooltip.shadow.width = 0
             tooltip.style = HICSSObject()
@@ -70,7 +84,7 @@ class PackedBubbleChartTest {
                 verticalAlign = "middle"
                 align = "center"
                 useHTML = true
-                zIndex = 0
+                zIndex = -100000000000000000
                 format = "<div style=\"text-align:center;height:{point.custom.header_size}px\">" +
                         "<span style=\"font-size:{point.custom.header_size}px\">{point.name}</span>" +
                         "</div>" +
@@ -78,6 +92,15 @@ class PackedBubbleChartTest {
                         "<span style=\"font-size:{point.custom.point_size}px;font-weight:500;\">" +
                         "{point.value:.0f}%</span>" +
                         "</div>"
+//                formatter = HIFunction("function(){" +
+//                        "return '" +
+//                        "<span style=\"font-size:'+this.point.custom.header_size+'px;\">" +
+//                        "'+this.point.name+'</span>" +
+//                        "<br/>" +
+//                        "<span style=\"font-size:'+this.point.custom.point_size+'px;font-weight:500;\">" +
+//                        "'+Math.round(this.point.value)+'%</span>" +
+//                        "'" +
+//                        "}")
                 filter = HIFilter()
                 filter.apply {
                     property = "value"
@@ -102,25 +125,23 @@ class PackedBubbleChartTest {
             packedBubble.name = "Seizures"
 
             val dataList = ArrayList<HIData>()
-            val sumValue = inputData.map{ v->v.value}.sumOf { it.toInt() }
-            val minValue = inputData.map{ v->v.value}.minOf { it.toInt() }
-            val maxValue = inputData.map{ v->v.value}.maxOf { it.toInt() }
+            val sumValue = inputData.map { v -> v.value }.sumOf { it.toInt() }
+            val minValue = inputData.map { v -> v.value }.minOf { it.toInt() }
+            val maxValue = inputData.map { v -> v.value }.maxOf { it.toInt() }
 
             inputData.forEach {
                 val data = HIData()
                 data.name = it.name
                 // 퍼센트
                 data.value = (it.value.toFloat() / sumValue.toFloat()) * 100
-                data.custom = HashMap<String,Any>()
+                data.custom = HashMap<String, Any>()
+                //값
                 data.custom["value"] = it.value
-                data.custom["header_size"] =  if (it.value == maxValue) 12 else 0
-                data.custom["point_size"] = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
-//                //값
-//                data.x = it.value
-//                // Aura confirmed 글자크기 설정값 -> 최대크기만 표시
-//                data.q3 = if (it.value == maxValue) 12 else 0
-//                // 퍼센트 글자크기 설정값
-//                data.q1 = if (it.value == maxValue) 24 else if(data.value.toFloat()>15) 14 else 0
+                //header 글자크기
+                data.custom["header_size"] = if (it.value == maxValue) 12 else 0
+                // point 글자크기
+                data.custom["point_size"] =
+                    if (it.value == maxValue) 24 else if (data.value.toFloat() > 15) 14 else 0
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
                 stops.add(HIStop(1f, HIColor.initWithHexValue(it.color.end)))
