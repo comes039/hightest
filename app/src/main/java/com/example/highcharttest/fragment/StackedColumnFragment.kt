@@ -21,13 +21,14 @@ class StackedColumnFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = StackedColumnFragmentBinding.inflate(layoutInflater)
+        binding.stackedColumnChart.addFont(R.font.dmsansregular)
         val root: View = binding.root
         stackedColumnChartSample()
         return root
     }
 
     private fun stackedColumnChartSample() {
-        binding.stackedColumnChart.addFont(R.font.dmsans_regular)
+
         val category = ArrayList<String>(listOf("Nov 1", "2", "3", "4", "5", "6", "7"))
         val hcxAxis = HCXAxis(category)
         val hcyAxis = HCYAxis(true, true, "test", 2, 2, "solid")

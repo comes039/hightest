@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.highcharttest.R
 import com.example.highcharttest.chart.PackedBubbleChartTest
 import com.example.highcharttest.chart.data.GradientColor
 import com.example.highcharttest.chart.data.HCDataGradient
@@ -30,6 +31,7 @@ class BubbleFragment : Fragment() {
             HCDataGradient("Aura unknown", 3, GradientColor("CBCBD5", "CBCBD5")),
             HCDataGradient("No record", 3, GradientColor("E9E9E9", "E9E9E9"))
         )
+        binding.bubbleChart.addFont(R.font.dmsansregular)
         binding.bubbleChart.options = PackedBubbleChartTest.options(inputData)
     }
 }

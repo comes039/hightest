@@ -34,7 +34,7 @@ class PackedBubbleChartTest {
             val chart = HIChart()
             chart.type = "packedbubble"
             chart.style = HICSSObject()
-//            chart.style.fontFamily = "dmsans_regular"
+            chart.style.fontFamily = "dmsansregular"
             chart.height = "100%"
 
 //            chart.width = "100%"
@@ -172,19 +172,19 @@ class PackedBubbleChartTest {
 
             options.series = arrayListOf(packedBubble)
 
-            val responsive = HIResponsive()
-            val rule = HIRules()
-            rule.condition = HICondition()
-            rule.condition.maxHeight = 300
-            val ruleOptions = HashMap<String, HashMap<String, String>>()
-            val legendRules = HashMap<String, String>()
-            legendRules.put("align", "left")
-            legendRules.put("verticalAlign", "middle")
-            legendRules.put("layout", "vertical")
-            ruleOptions.put("legend", legendRules)
-            rule.chartOptions = ruleOptions
-            responsive.rules = arrayListOf(rule)
-            options.responsive = responsive
+//            val responsive = HIResponsive()
+//            val rule = HIRules()
+//            rule.condition = HICondition()
+//            rule.condition.maxHeight = 300
+//            val ruleOptions = HashMap<String, HashMap<String, String>>()
+//            val legendRules = HashMap<String, String>()
+//            legendRules.put("align", "left")
+//            legendRules.put("verticalAlign", "middle")
+//            legendRules.put("layout", "vertical")
+//            ruleOptions.put("legend", legendRules)
+//            rule.chartOptions = ruleOptions
+//            responsive.rules = arrayListOf(rule)
+//            options.responsive = responsive
 
             return options
         }

@@ -4,4 +4,9 @@
     <string name="bubble_chart">Bubble Chart</string>
     <string name="week">Nov 1, 2022 ~ Nov 7, 2022</string>
     <string name="aura_comment">You entered 19 aura out of 20 seizures</string>
+    <string name="aura_confir">Aura confirmed</string>
+    <string name="seizures">11 seizures</string>
+    <string name="no_aura_con">No aura confirmed</string>
+    <string name="aura_unknown">Aura unknown</string>
+    <string name="no_record">No record</string>
 </resources>
