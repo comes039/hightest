@@ -5,24 +5,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/stacked_column_chart"
-            android:textSize="50sp"
-            android:fontFamily="@font/dmsansregular"
-            android:textAlignment="center"
-            />
 
-    <com.highsoft.highcharts.core.HIChartView
-            android:id="@+id/stacked_column_chart"
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.821" />
+            app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="@string/stacked_column_chart"
+                android:textSize="50sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/dmsansregular"
+                android:textAlignment="center" />
+
+        <com.highsoft.highcharts.core.HIChartView
+                android:id="@+id/stacked_column_chart"
+                android:layout_width="match_parent"
+                android:layout_height="400sp"
+                android:layout_marginTop="30dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
