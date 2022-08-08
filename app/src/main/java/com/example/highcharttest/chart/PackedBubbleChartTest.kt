@@ -181,10 +181,10 @@ class PackedBubbleChartTest {
             rule.condition.maxHeight = 300
             val ruleOptions = HashMap<String, HashMap<String, String>>()
             val legendRules = HashMap<String, String>()
-            legendRules.put("align", "left")
-            legendRules.put("verticalAlign", "middle")
-            legendRules.put("layout", "vertical")
-            ruleOptions.put("legend", legendRules)
+            legendRules["align"] = "left"
+            legendRules["verticalAlign"] = "middle"
+            legendRules["layout"] = "vertical"
+            ruleOptions["legend"] = legendRules
             rule.chartOptions = ruleOptions
             responsive.rules = arrayListOf(rule)
             options.responsive = responsive
