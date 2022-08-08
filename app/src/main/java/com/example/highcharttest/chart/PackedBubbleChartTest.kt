@@ -75,7 +75,7 @@ class PackedBubbleChartTest {
             tooltip.formatter = HIFunction("function(){" +
                     "return '" +
                     "<div style=\"z-index:100\">" +
-                    "<div>'+this.point.name+'</div><div style=\"text-align:center\">" +
+                    "<div>'+this.point.name+'</div><div>" +
                     "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
                     "<span style=\"font-size:12px;color:#FFFFFF\">'+this.point.custom.value+' seizures</span></div>" +
                     "</div>" +

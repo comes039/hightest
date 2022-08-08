@@ -9,4 +9,9 @@
     <string name="no_aura_con">No aura confirmed</string>
     <string name="aura_unknown">Aura unknown</string>
     <string name="no_record">No record</string>
+    <string name="pie_string">Double vision\nwas the most\nseizure-relate aura</string>
+    <string name="double_vision">Double vision</string>
+    <string name="some_id">73%</string>
+    <string name="entries">45 entries</string>
+    <string name="view_all_re">View all records ></string>
 </resources>

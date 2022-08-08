@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
 import com.example.highcharttest.chart.PackedBubbleChartTest
+import com.example.highcharttest.chart.PieChart
 import com.example.highcharttest.chart.data.GradientColor
 import com.example.highcharttest.chart.data.HCDataGradient
 import com.example.highcharttest.databinding.BubbleChartBinding
@@ -20,6 +21,7 @@ class BubbleFragment : Fragment() {
     ): View {
         binding = BubbleChartBinding.inflate(layoutInflater)
         packedBubbleChartSample()
+        pieChart()
         return binding.root
 
     }
@@ -34,4 +36,17 @@ class BubbleFragment : Fragment() {
         binding.bubbleChart.addFont(R.font.dmsansregular)
         binding.bubbleChart.options = PackedBubbleChartTest.options(inputData)
     }
+
+    private fun pieChart() {
+        val inputData = listOf(
+            HCDataGradient("Double vision", 45, GradientColor("F16899", "F4B2D5")),
+            HCDataGradient("Headache", 11, GradientColor("696A73", "696A73")),
+            HCDataGradient("Unknown", 8, GradientColor("9FA0AE", "9FA0AE")),
+            HCDataGradient("Not sure", 5, GradientColor("CBCBD5", "CBCBD5")),
+            HCDataGradient("Others", 4, GradientColor("E9E9E9", "E9E9E9")),
+        )
+        binding.pieChart.addFont(R.font.dmsansregular)
+        binding.pieChart.options = PieChart.options(inputData)
+    }
+
 }
