@@ -53,17 +53,17 @@ class PackedBubbleChartTest {
             tooltip.backgroundColor = HIColor.initWithHexValue("000000")
             tooltip.borderWidth = 0
             tooltip.borderRadius = 8
-//            tooltip.positioner = HIFunction("function (labelWidth, labelHeight, point) {" +
-//                    "let width = chart.yAxis;"+
-//                    "console.log(chart.plotLeft);"+
-//                    "console.log(point.property['y']);"+
-//                    "console.log(chart.yAxis);"+
-//                    "console.log(chart.plotTop);"+
-//                    "console.log('x : '+point.plotX);"+
-//                    "console.log('y : '+(260-point.plotY));"+
-//                    "console.log(labelHeight);"+
-//                    "return { x:point.plotX+10-labelWidth/2,y: point.plotY -labelHeight/2-50}; }");
-//
+ /*           tooltip.positioner = HIFunction("function (labelWidth, labelHeight, point) {" +
+                    "let width = chart.yAxis;"+
+                    "console.log(chart.plotLeft);"+
+                    "console.log(point.property['y']);"+
+                    "console.log(chart.yAxis);"+
+                    "console.log(chart.plotTop);"+
+                    "console.log('x : '+point.plotX);"+
+                    "console.log('y : '+(260-point.plotY));"+
+                    "console.log(labelHeight);"+
+                    "return { x:point.plotX+10-labelWidth/2,y: point.plotY -labelHeight/2-50}; }");
+*/
             tooltip.shadow = HIShadowOptionsObject()
             tooltip.shadow.width = 0
             tooltip.style = HICSSObject()
