@@ -164,7 +164,9 @@ class PackedBubbleChartTest {
             packedBubble.data = dataList
             packedBubble.layoutAlgorithm = HILayoutAlgorithm()
             packedBubble.layoutAlgorithm.gravitationalConstant = 0.02
-            // width 대비 비율로 계산해야함
+            // bubble between distance 설정
+            packedBubble.layoutAlgorithm.bubblePadding  = 10
+            // bubble size 설정
             packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 300
             packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 300
             packedBubble.marker = HIMarker()
