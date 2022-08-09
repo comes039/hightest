@@ -29,6 +29,7 @@ class PieChart {
             val chart = HIChart()
             chart.type = "pie"
             chart.height = "100%"
+            chart.backgroundColor = HIColor.initWithHexValue("F8F8F8FF")
             options.chart = chart
 
             val title = HITitle()

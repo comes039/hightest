@@ -78,7 +78,7 @@
         </item>
 
         <item name="android:fontFamily">
-            @font/dmsansbold
+            @font/dmsansregular
         </item>
     </style>
 </resources>

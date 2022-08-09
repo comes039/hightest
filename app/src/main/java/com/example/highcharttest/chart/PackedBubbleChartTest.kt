@@ -34,6 +34,7 @@ class PackedBubbleChartTest {
             val chart = HIChart()
             chart.type = "packedbubble"
             chart.style = HICSSObject()
+            chart.backgroundColor = HIColor.initWithHexValue("F8F8F8FF")
             chart.style.fontFamily = "dmsansregular"
             chart.height = "100%"
 
@@ -165,10 +166,10 @@ class PackedBubbleChartTest {
             packedBubble.layoutAlgorithm = HILayoutAlgorithm()
             packedBubble.layoutAlgorithm.gravitationalConstant = 0.02
             // bubble between distance 설정
-            packedBubble.layoutAlgorithm.bubblePadding  = 10
+            packedBubble.layoutAlgorithm.bubblePadding  = 15
             // bubble size 설정
-            packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 300
-            packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 300
+            packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 350
+            packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 350
             packedBubble.marker = HIMarker()
             // 테두리 설정
             packedBubble.marker.lineWidth = 0

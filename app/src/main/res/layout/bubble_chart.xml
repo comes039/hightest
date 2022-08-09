@@ -56,7 +56,7 @@
             <com.highsoft.highcharts.core.HIChartView
                     android:id="@+id/bubble_chart"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="350dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:layout_marginLeft="30dp"
@@ -73,7 +73,7 @@
                     android:background="@drawable/info_legend">
 
                 <View
-                        android:id="@+id/box"
+                        android:id="@+id/pie_box"
                         android:layout_width="8dp"
                         android:layout_height="8dp"
                         android:layout_alignParentStart="true"
@@ -276,13 +276,14 @@
                     android:background="@drawable/list_legend">
 
                 <ListView
-                        android:id="@+id/list_legend"
+                        android:id="@+id/list_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="280dp"
                         android:layout_marginStart="20dp"
                         android:scrollbars="none"
                         android:layout_marginEnd="20dp"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="20dp"
+                        android:dividerHeight="20dp"
                         android:nestedScrollingEnabled="false" />
 
                 <View

@@ -28,6 +28,7 @@ class StackedColumnChartGradient {
             val chart = HIChart()
             chart.marginTop = 20
             chart.style = HICSSObject()
+            chart.backgroundColor = HIColor.initWithHexValue("F8F8F8FF")
             chart.style.fontFamily = "dmsansregular"
             chart.marginBottom = 20
             options.chart = chart
