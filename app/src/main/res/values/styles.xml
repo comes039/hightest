@@ -26,6 +26,7 @@
             @font/dmsansregular
         </item>
     </style>
+
     <style name="double_visi">
 
         <item name="android:textSize">
@@ -39,6 +40,7 @@
             @font/dmsansregular
         </item>
     </style>
+
     <style name="some_id">
 
         <item name="android:textSize">
@@ -53,6 +55,7 @@
         </item>
 
     </style>
+
     <style name="entries">
 
         <item name="android:textSize">
@@ -67,6 +70,7 @@
         </item>
 
     </style>
+
     <style name="view_all_re">
 
         <item name="android:textSize">
@@ -81,4 +85,66 @@
             @font/dmsansregular
         </item>
     </style>
+
+    <style name="did_you_hav">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+        <item name="android:fontFamily">
+            @font/dmsansregular
+        </item>
+
+    </style>
+
+    <style name="nov_1_2022">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #888888
+        </item>
+        <item name="android:fontFamily">
+            @font/dmsansregular
+        </item>
+
+    </style>
+
+    <style name="added_in_ea">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+        <item name="android:fontFamily">
+            @font/dmsansregular
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <style name="device">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+        <item name="android:fontFamily">
+            @font/dmsansregular
+        </item>
+
+        <item name="android:textColor">
+            #FB74A6
+        </item>
+
+    </style>
+
+
 </resources>

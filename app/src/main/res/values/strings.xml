@@ -15,4 +15,9 @@
     <string name="entries">45 entries</string>
     <string name="view_all_re">View all records ></string>
     <string name="seizures_text">58% of seizures\noccured with aura</string>
+    <string name="did_you_hav">All records</string>
+    <string name="nov_1_2022">Nov 1, 2022 ~ Nov 7,2022</string>
+    <string name="added_in_ea">Added in each seizure</string>
+    <string name="device">79.1%</string>
+
 </resources>

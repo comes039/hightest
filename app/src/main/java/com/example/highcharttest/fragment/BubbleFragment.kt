@@ -12,11 +12,11 @@ import com.example.highcharttest.chart.PieChart
 import com.example.highcharttest.chart.data.GradientColor
 import com.example.highcharttest.chart.data.HCDataGradient
 import com.example.highcharttest.chart.data.SampleData
-import com.example.highcharttest.databinding.BubbleChartBinding
+import com.example.highcharttest.databinding.ReportAuraBinding
 
 class BubbleFragment : Fragment() {
 
-    private lateinit var binding: BubbleChartBinding
+    private lateinit var binding: ReportAuraBinding
 
     val pieList = arrayListOf(
         SampleData("Double vision",45,1,"73%"),
@@ -34,7 +34,7 @@ class BubbleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = BubbleChartBinding.inflate(layoutInflater)
+        binding = ReportAuraBinding.inflate(layoutInflater)
         val context = this.context
         val adapter = PieListAdapter(pieList,context)
         binding.listView.adapter = adapter
