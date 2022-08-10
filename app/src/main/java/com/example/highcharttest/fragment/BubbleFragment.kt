@@ -1,11 +1,13 @@
 package com.example.highcharttest.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
+import com.example.highcharttest.activity.AllRecordActivity
 import com.example.highcharttest.adaptor.PieListAdapter
 import com.example.highcharttest.chart.PackedBubbleChartTest
 import com.example.highcharttest.chart.PieChart
@@ -19,11 +21,11 @@ class BubbleFragment : Fragment() {
     private lateinit var binding: ReportAuraBinding
 
     val pieList = arrayListOf(
-        SampleData("Double vision",45,1,"73%"),
-        SampleData("Headache",11,2,"15%"),
-        SampleData("Unknown",8,3,"7%"),
-        SampleData("Not sure",5,4,"5%"),
-        SampleData("other",4,4,"5%")
+        SampleData("Double vision", 45, 1, "73%"),
+        SampleData("Headache", 11, 2, "15%"),
+        SampleData("Unknown", 8, 3, "7%"),
+        SampleData("Not sure", 5, 4, "5%"),
+        SampleData("other", 4, 4, "5%")
     )
 
 
@@ -36,8 +38,14 @@ class BubbleFragment : Fragment() {
     ): View {
         binding = ReportAuraBinding.inflate(layoutInflater)
         val context = this.context
-        val adapter = PieListAdapter(pieList,context)
+        val adapter = PieListAdapter(pieList, context)
         binding.listView.adapter = adapter
+        binding.viewAllRe.setOnClickListener(View.OnClickListener {
+
+            val intent = Intent(getContext(), AllRecordActivity::class.java)
+            startActivity(intent)
+
+        })
         packedBubbleChartSample()
         pieChart()
         return binding.root
@@ -66,5 +74,6 @@ class BubbleFragment : Fragment() {
         binding.pieChart.addFont(R.font.dmsansregular)
         binding.pieChart.options = PieChart.options(inputData)
     }
+
 
 }
