@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
      * sequence.
      */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        val fragmentList = listOf(StackedColumnFragment(), BubbleFragment(),AuraAllRecordsFragment())
+        val fragmentList = listOf(BubbleFragment(),AuraAllRecordsFragment())
         override fun getItemCount(): Int = fragmentList.size
         override fun createFragment(position: Int): Fragment = fragmentList[position]
     }
