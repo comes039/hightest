@@ -30,7 +30,7 @@
 
                 <TextView
                         android:id="@+id/did_you_hav"
-                        android:layout_width="87dp"
+                        android:layout_width="100dp"
                         android:layout_height="22dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="22dp"
@@ -42,8 +42,8 @@
 
                 <View
                         android:id="@+id/ico_arrow_l"
-                        android:layout_width="10.4dp"
-                        android:layout_height="16.4dp"
+                        android:layout_width="16.4dp"
+                        android:layout_height="10.4dp"
                         android:layout_marginStart="368.78dp"
                         android:layout_marginEnd="19.2dp"
                         android:layout_marginTop="30.53dp"
@@ -102,13 +102,28 @@
                 <ListView
                         android:id="@+id/aura_list_view"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
                         android:scrollbars="none"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="40dp"
                         android:layout_marginTop="248dp"
-                        android:dividerHeight="20dp"
+                        android:dividerHeight="35dp"
                         android:nestedScrollingEnabled="false" />
+
+                <Button
+                        android:id="@+id/box_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="center"
+                        android:text="@string/done"
+                        android:textAppearance="@style/title"
+                        android:layout_below="@id/aura_list_view"
+                        android:background="@drawable/box_active">
+
+                </Button>
             </RelativeLayout>
 
 

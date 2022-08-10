@@ -146,5 +146,20 @@
 
     </style>
 
+    <style name="title">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+        <item name="android:fontFamily">
+            @font/dmsansregular
+        </item>
+
+    </style>
+
 
 </resources>

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.highcharttest.adaptor.PieListAdapter
+import com.example.highcharttest.adaptor.PieAllListAdapter
 import com.example.highcharttest.chart.data.SampleData
 import com.example.highcharttest.databinding.ReportAuraAllRecordsBinding
 
@@ -30,8 +30,8 @@ class AuraAllRecordsFragment : Fragment() {
     ): View {
         binding = ReportAuraAllRecordsBinding.inflate(layoutInflater)
         val context = this.context
-        val adapter = PieListAdapter(pieList, context)
-
+        val adapter = PieAllListAdapter(pieList, context)
+        binding.auraListView.adapter = adapter
         return binding.root
 
     }

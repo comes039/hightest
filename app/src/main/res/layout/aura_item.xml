@@ -29,18 +29,19 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="18dp"
             android:layout_alignParentTop="true"
+            android:paddingTop="1dp"
             android:text="@string/double_vision"
             android:textAppearance="@style/double_visi"
             android:lineSpacingExtra="2sp"
             android:translationY="-0.89sp"
-            android:gravity="top" />
+            android:gravity="left|center" />
 
     <TextView
             android:id="@+id/pie_percent"
             android:layout_width="70dp"
             android:layout_height="22dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="210dp"
+            android:layout_marginStart="260dp"
             android:layout_alignParentTop="true"
             android:text="@string/some_id"
             android:textAppearance="@style/some_id"

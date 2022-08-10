@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.highcharttest.R
 import com.example.highcharttest.databinding.ActivityMainBinding
+import com.example.highcharttest.fragment.AuraAllRecordsFragment
 import com.example.highcharttest.fragment.BubbleFragment
 import com.example.highcharttest.fragment.StackedColumnFragment
 
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
      * sequence.
      */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        val fragmentList = listOf(StackedColumnFragment(), BubbleFragment())
+        val fragmentList = listOf(StackedColumnFragment(), BubbleFragment(),AuraAllRecordsFragment())
         override fun getItemCount(): Int = fragmentList.size
         override fun createFragment(position: Int): Fragment = fragmentList[position]
     }
