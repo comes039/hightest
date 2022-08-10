@@ -26,6 +26,7 @@ public class AllRecordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.report_aura_all_records)
+        binding = DataBindingUtil.setContentView(this,R.layout.report_aura_all_records)
 
 //        binding = ReportAuraAllRecordsBinding.inflate(layoutInflater)
         listView = findViewById(R.id.aura_list_view)

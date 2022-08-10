@@ -1,133 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        tools:context=".activity.MainActivity">
-
-    <ScrollView
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+                name="sampleData"
+                type="com.example.highcharttest.chart.data.SampleData" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
+            tools:context=".activity.MainActivity">
 
-        <LinearLayout
+        <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <RelativeLayout
-                    android:id="@+id/bg"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="740dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/bg"
-                    android:elevation="30dp"
-                    >
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <TextView
-                        android:id="@+id/did_you_hav"
-                        android:layout_width="100dp"
-                        android:layout_height="22dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="22dp"
-
-                        android:text="@string/did_you_hav"
-                        android:textAppearance="@style/did_you_hav"
-                        android:lineSpacingExtra="0sp"
-                        android:gravity="top" />
-
-                <View
-                        android:id="@+id/ico_arrow_l"
-                        android:layout_width="16.4dp"
-                        android:layout_height="10.4dp"
-                        android:layout_marginStart="368.78dp"
-                        android:layout_marginEnd="19.2dp"
-                        android:layout_marginTop="30.53dp"
-                        android:background="@drawable/ico_arrow2_gray2_down_default" />
-
-                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:id="@+id/info"
+                <RelativeLayout
+                        android:id="@+id/bg"
                         android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="78dp"
-                        android:background="@drawable/info">
+                        android:layout_height="740dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/bg"
+                        android:elevation="30dp">
 
                     <TextView
-                            android:id="@+id/nov_1_2022"
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:text="@string/nov_1_2022"
-                            android:textAppearance="@style/nov_1_2022"
-                            android:lineSpacingExtra="2sp"
-                            android:translationY="-0.89sp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:gravity="top" />
-
-                    <TextView
-                            android:id="@+id/added_in_ea"
-                            android:layout_width="147dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="60dp"
-                            android:text="@string/added_in_ea"
-                            android:textAppearance="@style/added_in_ea"
-                            android:lineSpacingExtra="2sp"
-                            android:translationY="-0.89sp"
-                            android:gravity="top" />
-
-                    <TextView
-                            android:id="@+id/device"
-                            android:layout_width="match_parent"
+                            android:id="@+id/did_you_hav"
+                            android:layout_width="100dp"
                             android:layout_height="22dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="88dp"
-                            android:text="@string/device"
-                            android:textAppearance="@style/device"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginTop="22dp"
+
+                            android:text="@string/did_you_hav"
+                            android:textAppearance="@style/did_you_hav"
                             android:lineSpacingExtra="0sp"
                             android:gravity="top" />
 
+                    <View
+                            android:id="@+id/ico_arrow_l"
+                            android:layout_width="16.4dp"
+                            android:layout_height="10.4dp"
+                            android:layout_marginStart="368.78dp"
+                            android:layout_marginEnd="19.2dp"
+                            android:layout_marginTop="30.53dp"
+                            android:background="@drawable/ico_arrow2_gray2_down_default" />
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/info"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="78dp"
+                            android:background="@drawable/info">
+
+                        <TextView
+                                android:id="@+id/nov_1_2022"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:text="@string/nov_1_2022"
+                                android:textAppearance="@style/nov_1_2022"
+                                android:lineSpacingExtra="2sp"
+                                android:translationY="-0.89sp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:id="@+id/added_in_ea"
+                                android:layout_width="147dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="60dp"
+                                android:text="@string/added_in_ea"
+                                android:textAppearance="@style/added_in_ea"
+                                android:lineSpacingExtra="2sp"
+                                android:translationY="-0.89sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:id="@+id/device"
+                                android:layout_width="match_parent"
+                                android:layout_height="22dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="88dp"
+                                android:text="@string/device"
+                                android:textAppearance="@style/device"
+                                android:lineSpacingExtra="0sp"
+                                android:gravity="top" />
+
+                    </RelativeLayout>
+
+                    <ListView
+                            android:id="@+id/aura_list_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="40dp"
+                            android:scrollbars="none"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginTop="248dp"
+                            android:dividerHeight="35dp"
+                            android:nestedScrollingEnabled="false" />
+
+                    <Button
+                            android:id="@+id/box_active"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:text="@string/done"
+                            android:textAppearance="@style/title"
+                            android:layout_below="@id/aura_list_view"
+                            android:background="@drawable/box_active">
+
+                    </Button>
                 </RelativeLayout>
 
-                <ListView
-                        android:id="@+id/aura_list_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:scrollbars="none"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginTop="248dp"
-                        android:dividerHeight="35dp"
-                        android:nestedScrollingEnabled="false" />
 
-                <Button
-                        android:id="@+id/box_active"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:gravity="center"
-                        android:text="@string/done"
-                        android:textAppearance="@style/title"
-                        android:layout_below="@id/aura_list_view"
-                        android:background="@drawable/box_active">
-
-                </Button>
-            </RelativeLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

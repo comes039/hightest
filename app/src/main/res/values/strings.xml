@@ -2,7 +2,7 @@
     <string name="app_name">highChartTest</string>
     <string name="stacked_column_chart">Stacked Column Chart</string>
     <string name="bubble_chart">Bubble Chart</string>
-    <string name="week">Nov 1, 2022 ~ Nov 7, 2022</string>
+    <string name="report_aura_date">%1$s ~ %2$s</string>
     <string name="aura_comment">You entered 19 aura out of 20 seizures</string>
     <string name="aura_confir">Aura confirmed</string>
     <string name="seizures">11 seizures</string>

@@ -15,6 +15,9 @@ import com.example.highcharttest.chart.data.GradientColor
 import com.example.highcharttest.chart.data.HCDataGradient
 import com.example.highcharttest.chart.data.SampleData
 import com.example.highcharttest.databinding.ReportAuraBinding
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class BubbleFragment : Fragment() {
 
@@ -27,9 +30,25 @@ class BubbleFragment : Fragment() {
         SampleData("Not sure", 5, 4, "5%"),
         SampleData("other", 4, 4, "5%")
     )
+    val format = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH)
 
+    // 7days
+    val week = getDate(
+        LocalDate.now().minusWeeks(1).format(format),
+        LocalDate.now().format(format)
+    )
 
-//    private var pieList = arrayListOf<SampleData>()
+    // 1month
+    val month = getDate(
+        LocalDate.now().minusMonths(1).toString(),
+        LocalDate.now().toString()
+    )
+
+    // 3 month
+    val threeMonth = getDate(
+        LocalDate.now().minusMonths(3).toString(),
+        LocalDate.now().toString()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +59,9 @@ class BubbleFragment : Fragment() {
         val context = this.context
         val adapter = PieListAdapter(pieList, context)
         binding.listView.adapter = adapter
+        // 기본값 week 로설정
+        binding.date.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
+        binding.pieDate.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
         binding.viewAllRe.setOnClickListener(View.OnClickListener {
 
             val intent = Intent(getContext(), AllRecordActivity::class.java)
@@ -75,5 +97,9 @@ class BubbleFragment : Fragment() {
         binding.pieChart.options = PieChart.options(inputData)
     }
 
+    class getDate(
+        val startDate: String,
+        val endDate: String
+    )
 
 }
