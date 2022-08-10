@@ -40,14 +40,14 @@ class BubbleFragment : Fragment() {
 
     // 1month
     val month = getDate(
-        LocalDate.now().minusMonths(1).toString(),
-        LocalDate.now().toString()
+        LocalDate.now().minusMonths(1).format(format),
+        LocalDate.now().format(format)
     )
 
     // 3 month
     val threeMonth = getDate(
-        LocalDate.now().minusMonths(3).toString(),
-        LocalDate.now().toString()
+        LocalDate.now().minusMonths(3).format(format),
+        LocalDate.now().format(format)
     )
 
     override fun onCreateView(
