@@ -84,7 +84,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="24dp"
-                        android:background="@drawable/box_aura" />
+                        android:background="@drawable/box_pink" />
 
                 <View
                         android:id="@+id/box1"
@@ -94,7 +94,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="50dp"
-                        android:background="@drawable/box_no_aura" />
+                        android:background="@drawable/box_gray" />
 
                 <View
                         android:id="@+id/box2"
@@ -104,7 +104,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="76dp"
-                        android:background="@drawable/box_aura_unknown" />
+                        android:background="@drawable/box_gray_white" />
 
                 <View
                         android:id="@+id/box3"
@@ -114,7 +114,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="102dp"
-                        android:background="@drawable/box_no_record" />
+                        android:background="@drawable/box_white" />
 
                 <!-- aura text-->
                 <TextView

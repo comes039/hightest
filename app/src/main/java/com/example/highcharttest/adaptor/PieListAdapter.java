@@ -52,19 +52,19 @@ public class PieListAdapter extends BaseAdapter {
 		Number color = sampleData.getColor();
 		switch (color.intValue()) {
 			case 1:
-				vh.color.setBackgroundResource(R.drawable.box_aura);
+				vh.color.setBackgroundResource(R.drawable.box_pink);
 				break;
 			case 2:
-				vh.color.setBackgroundResource(R.drawable.box_aura_unknown);
+				vh.color.setBackgroundResource(R.drawable.box_dark_gray);
 				break;
 			case 3:
-				vh.color.setBackgroundResource(R.drawable.box_no_aura);
+				vh.color.setBackgroundResource(R.drawable.box_gray_white);
 				break;
 			case 4:
-				vh.color.setBackgroundResource(R.drawable.box_no_record);
+				vh.color.setBackgroundResource(R.drawable.box_gray);
 				break;
 			default:
-				vh.color.setBackgroundResource(R.drawable.box_no_record);
+				vh.color.setBackgroundResource(R.drawable.box_white);
 		}
 
 
