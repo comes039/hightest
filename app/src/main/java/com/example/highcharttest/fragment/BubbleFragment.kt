@@ -78,16 +78,14 @@ class BubbleFragment : Fragment() {
     private fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
         val inputData: ArrayList<HCDataGradient> = ArrayList()
         var sumOtherValue = 0
-        var otherPercent = 0.0
         for (i in response.indices) {
             if (i < 4) {
-                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, GradientColor(colorList[i].start, colorList[i].end)))
+                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, colorList[i]))
             } else {
                 sumOtherValue += response[i].tagCount.toInt()
-                otherPercent += response[i].rate.toDouble()
             }
         }
-        inputData.add(HCDataGradient("Other", sumOtherValue, GradientColor(colorList[4].start, colorList[4].end)))
+        inputData.add(HCDataGradient("Other", sumOtherValue, colorList[4]))
         return inputData
     }
 
