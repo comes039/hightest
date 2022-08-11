@@ -51,7 +51,7 @@ class BubbleFragment : Fragment() {
             getString(R.string.seizures, weekReportAuraData.noAuraConfirmed)
         binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.auraUnknown)
         binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.noRecord)
-
+        binding.pieTitle.text = getString(R.string.pie_string, weekPieData.totalTagInfoList[0].auraTag)
         binding.viewAllRe.setOnClickListener(View.OnClickListener {
 
             val intent = Intent(getContext(), AllRecordActivity::class.java)
@@ -59,7 +59,7 @@ class BubbleFragment : Fragment() {
 
         })
         packedBubbleChart(weekReportAuraData)
-        pieChart()
+        pieChart(weekPieData)
         return binding.root
 
     }
@@ -69,43 +69,38 @@ class BubbleFragment : Fragment() {
         binding.bubbleChart.options = PackedBubbleChartTest.options(packedBubbleChartData(response))
     }
 
-    private fun pieChart() {
-        val inputData = listOf(
-            HCDataGradient("Double vision", 45, GradientColor("F16899", "F4B2D5")),
-            HCDataGradient("Headache", 11, GradientColor("696A73", "696A73")),
-            HCDataGradient("Unknown", 8, GradientColor("9FA0AE", "9FA0AE")),
-            HCDataGradient("Not sure", 5, GradientColor("CBCBD5", "CBCBD5")),
-            HCDataGradient("Others", 4, GradientColor("E9E9E9", "E9E9E9")),
-        )
+    private fun pieChart(response: ReportAuraTagResponse) {
         binding.pieChart.addFont(R.font.dmsansregular)
-        binding.pieChart.options = PieChart.options(inputData)
+        binding.pieChart.options = PieChart.options(pieChartData(response.totalTagInfoList))
+    }
+
+    private fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
+        val inputData: ArrayList<HCDataGradient> = ArrayList()
+        var sumOtherValue = 0
+        for (i in response.indices) {
+            if (i < 4) {
+                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, GradientColor(colorList[i], colorList[i])))
+            } else {
+                sumOtherValue += response[i].tagCount.toInt()
+            }
+        }
+        inputData.add(HCDataGradient("Other", sumOtherValue, GradientColor(colorList[4], colorList[4])))
+        return inputData
     }
 
     private fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
         return listOf(
             HCPackedBubbleData(
-                "Aura confirmed",
-                response.auraConfirmed.toInt(),
-                GradientColor("F16899", "F4B2D5"),
-                response.firstRate.toDouble()
+                "Aura confirmed", response.auraConfirmed.toInt(), GradientColor("F16899", "F4B2D5"), response.firstRate.toDouble()
             ),
             HCPackedBubbleData(
-                "No aura confirmed",
-                response.noAuraConfirmed.toInt(),
-                GradientColor("9697A5", "9697A5"),
-                response.secondRate.toDouble()
+                "No aura confirmed", response.noAuraConfirmed.toInt(), GradientColor("9697A5", "9697A5"), response.secondRate.toDouble()
             ),
             HCPackedBubbleData(
-                "Aura unknown",
-                response.auraUnknown.toInt(),
-                GradientColor("CBCBD5", "CBCBD5"),
-                response.thirdRate.toDouble()
+                "Aura unknown", response.auraUnknown.toInt(), GradientColor("CBCBD5", "CBCBD5"), response.thirdRate.toDouble()
             ),
             HCPackedBubbleData(
-                "No record",
-                response.noRecord.toInt(),
-                GradientColor("E9E9E9", "E9E9E9"),
-                response.fourthRate.toDouble()
+                "No record", response.noRecord.toInt(), GradientColor("E9E9E9", "E9E9E9"), response.fourthRate.toDouble()
             )
         )
     }
@@ -166,7 +161,7 @@ class BubbleFragment : Fragment() {
         "15.4"
 
     )
-    val monthData = ReportAuraResponse(
+    val monthReportAuraData = ReportAuraResponse(
         84,
         45,
         null,
@@ -191,7 +186,7 @@ class BubbleFragment : Fragment() {
         "13.6"
 
     )
-    val threeMonthData = ReportAuraResponse(
+    val threeMonthReportAuraData = ReportAuraResponse(
         252,
         124,
         null,
@@ -216,4 +211,45 @@ class BubbleFragment : Fragment() {
         "11.9"
 
     )
+    val weekPieData = ReportAuraTagResponse(
+        1, 34.6, 7, listOf(
+            TagInfoList(1, 78, "Double vision", 45, 57.6),
+            TagInfoList(1, 78, "Headache", 11, 14.1),
+            TagInfoList(1, 78, "Unknown", 8, 10.2),
+            TagInfoList(1, 78, "Anxiety", 5, 6.4),
+            TagInfoList(1, 78, "Upset stomach", 4, 5.1),
+            TagInfoList(1, 78, "Sleep issue", 3, 3.8),
+            TagInfoList(1, 78, "Tiredness", 2, 2.5),
+        )
+    )
+    val monthPieData = ReportAuraTagResponse(
+        1, 34.6, 7, listOf(
+            TagInfoList(1, 78, "Double vision", 45 * 2, 57.6),
+            TagInfoList(1, 78, "Headache", 11 * 2, 14.1),
+            TagInfoList(1, 78, "Unknown", 8 * 2, 10.2),
+            TagInfoList(1, 78, "Anxiety", 5 * 2, 6.4),
+            TagInfoList(1, 78, "Upset stomach", 4 * 2, 5.1),
+            TagInfoList(1, 78, "Sleep issue", 3 * 2, 3.8),
+            TagInfoList(1, 78, "Tiredness", 2 * 2, 2.5),
+        )
+    )
+    val threeMonthPieData = ReportAuraTagResponse(
+        1, 34.6, 7, listOf(
+            TagInfoList(1, 78, "Double vision", 45 * 6, 57.6),
+            TagInfoList(1, 78, "Headache", 11 * 6, 14.1),
+            TagInfoList(1, 78, "Unknown", 8 * 6, 10.2),
+            TagInfoList(1, 78, "Anxiety", 5 * 6, 6.4),
+            TagInfoList(1, 78, "Upset stomach", 4 * 6, 5.1),
+            TagInfoList(1, 78, "Sleep issue", 3 * 6, 3.8),
+            TagInfoList(1, 78, "Tiredness", 2 * 6, 2.5),
+        )
+    )
+    val colorList = listOf(
+        "FB74A6",
+        "696A73",
+        "A0A0A0",
+        "CCCCCC",
+        "E9E9E9",
+    )
+
 }
