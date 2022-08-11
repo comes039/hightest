@@ -16,6 +16,7 @@ import com.example.highcharttest.databinding.ReportAuraBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.round
 
 class BubbleFragment : Fragment() {
 
@@ -29,7 +30,7 @@ class BubbleFragment : Fragment() {
     ): View {
         binding = ReportAuraBinding.inflate(layoutInflater)
         val context = this.context
-        val adapter = PieListAdapter(pieList, context)
+        val adapter = PieListAdapter(pieListData(weekPieData.totalTagInfoList), context)
         binding.listView.adapter = adapter
         val titlePercent = String.format("%.0f", weekReportAuraData.firstRate.toDouble()) + "%"
         // 기본값 week 로설정
@@ -52,12 +53,12 @@ class BubbleFragment : Fragment() {
         binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.auraUnknown)
         binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.noRecord)
         binding.pieTitle.text = getString(R.string.pie_string, weekPieData.totalTagInfoList[0].auraTag)
-        binding.viewAllRe.setOnClickListener(View.OnClickListener {
+        binding.viewAllRe.setOnClickListener {
 
             val intent = Intent(getContext(), AllRecordActivity::class.java)
             startActivity(intent)
 
-        })
+        }
         packedBubbleChart(weekReportAuraData)
         pieChart(weekPieData)
         return binding.root
@@ -77,15 +78,34 @@ class BubbleFragment : Fragment() {
     private fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
         val inputData: ArrayList<HCDataGradient> = ArrayList()
         var sumOtherValue = 0
+        var otherPercent = 0.0
         for (i in response.indices) {
             if (i < 4) {
-                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, GradientColor(colorList[i], colorList[i])))
+                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, GradientColor(colorList[i].start, colorList[i].end)))
+            } else {
+                sumOtherValue += response[i].tagCount.toInt()
+                otherPercent += response[i].rate.toDouble()
+            }
+        }
+        inputData.add(HCDataGradient("Other", sumOtherValue, GradientColor(colorList[4].start, colorList[4].end)))
+        return inputData
+    }
+
+    private fun pieListData(response: List<TagInfoList>): List<SampleData> {
+        var otherPercent = 100.0
+        var sumOtherValue = 0
+        val pieList: ArrayList<SampleData> = arrayListOf()
+        for (i in response.indices) {
+            if (i < 4) {
+                val percent = String.format("%.0f", round(response[i].rate.toDouble())) + "%"
+                otherPercent -= String.format("%.0f", round(response[i].rate.toDouble())).toDouble()
+                pieList.add(SampleData(response[i].auraTag, response[i].tagCount, i + 1, percent))
             } else {
                 sumOtherValue += response[i].tagCount.toInt()
             }
         }
-        inputData.add(HCDataGradient("Other", sumOtherValue, GradientColor(colorList[4], colorList[4])))
-        return inputData
+        pieList.add(SampleData("Other", sumOtherValue, 5, String.format("%.0f", round(otherPercent)) + "%"))
+        return pieList
     }
 
     private fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
@@ -110,13 +130,7 @@ class BubbleFragment : Fragment() {
         val endDate: String
     )
 
-    val pieList = arrayListOf(
-        SampleData("Double vision", 45, 1, "73%"),
-        SampleData("Headache", 11, 2, "15%"),
-        SampleData("Unknown", 8, 3, "7%"),
-        SampleData("Not sure", 5, 4, "5%"),
-        SampleData("other", 4, 4, "5%")
-    )
+
     val format = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH)
 
     // 7days
@@ -245,11 +259,11 @@ class BubbleFragment : Fragment() {
         )
     )
     val colorList = listOf(
-        "FB74A6",
-        "696A73",
-        "A0A0A0",
-        "CCCCCC",
-        "E9E9E9",
+        GradientColor("F16899","F4B2D5"),
+        GradientColor("696A73","696A73"),
+        GradientColor("A0A0A0","A0A0A0"),
+        GradientColor("CCCCCC","CCCCCC"),
+        GradientColor("E9E9E9","E9E9E9"),
     )
 
 }
