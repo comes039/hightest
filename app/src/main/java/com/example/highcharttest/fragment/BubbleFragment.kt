@@ -11,10 +11,7 @@ import com.example.highcharttest.activity.AllRecordActivity
 import com.example.highcharttest.adaptor.PieListAdapter
 import com.example.highcharttest.chart.PackedBubbleChartTest
 import com.example.highcharttest.chart.PieChart
-import com.example.highcharttest.chart.data.GradientColor
-import com.example.highcharttest.chart.data.HCDataGradient
-import com.example.highcharttest.chart.data.ReportAuraResponse
-import com.example.highcharttest.chart.data.SampleData
+import com.example.highcharttest.chart.data.*
 import com.example.highcharttest.databinding.ReportAuraBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -34,9 +31,27 @@ class BubbleFragment : Fragment() {
         val context = this.context
         val adapter = PieListAdapter(pieList, context)
         binding.listView.adapter = adapter
+        val titlePercent = String.format("%.0f", weekReportAuraData.firstRate.toDouble()) + "%"
         // 기본값 week 로설정
         binding.date.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
         binding.pieDate.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
+        binding.bubbleTitle.text = getString(R.string.seizures_text, titlePercent)
+        binding.auraConfirmed.text = getString(
+            R.string.aura_comment,
+            weekReportAuraData.haveAuraTotalCount,
+            weekReportAuraData.seizureTotalCount
+        )
+        binding.bubbleComment.text = getString(
+            R.string.aura_comment,
+            weekReportAuraData.haveAuraTotalCount,
+            weekReportAuraData.seizureTotalCount
+        )
+        binding.auraConfirmed.text = getString(R.string.seizures, weekReportAuraData.auraConfirmed)
+        binding.noAuraConfirmed.text =
+            getString(R.string.seizures, weekReportAuraData.noAuraConfirmed)
+        binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.auraUnknown)
+        binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.noRecord)
+
         binding.viewAllRe.setOnClickListener(View.OnClickListener {
 
             val intent = Intent(getContext(), AllRecordActivity::class.java)
@@ -49,7 +64,7 @@ class BubbleFragment : Fragment() {
 
     }
 
-    private fun packedBubbleChart(response:ReportAuraResponse) {
+    private fun packedBubbleChart(response: ReportAuraResponse) {
         binding.bubbleChart.addFont(R.font.dmsansregular)
         binding.bubbleChart.options = PackedBubbleChartTest.options(packedBubbleChartData(response))
     }
@@ -65,12 +80,33 @@ class BubbleFragment : Fragment() {
         binding.pieChart.addFont(R.font.dmsansregular)
         binding.pieChart.options = PieChart.options(inputData)
     }
-    private fun packedBubbleChartData(response:ReportAuraResponse):List<HCDataGradient>{
+
+    private fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
         return listOf(
-            HCDataGradient("Aura confirmed", response.auraConfirmed.toInt(), GradientColor("F16899", "F4B2D5")),
-            HCDataGradient("No aura confirmed", response.noAuraConfirmed.toInt(), GradientColor("9697A5", "9697A5")),
-            HCDataGradient("Aura unknown", response.auraUnknown.toInt(), GradientColor("CBCBD5", "CBCBD5")),
-            HCDataGradient("No record", response.noRecord.toInt(), GradientColor("E9E9E9", "E9E9E9"))
+            HCPackedBubbleData(
+                "Aura confirmed",
+                response.auraConfirmed.toInt(),
+                GradientColor("F16899", "F4B2D5"),
+                response.firstRate.toDouble()
+            ),
+            HCPackedBubbleData(
+                "No aura confirmed",
+                response.noAuraConfirmed.toInt(),
+                GradientColor("9697A5", "9697A5"),
+                response.secondRate.toDouble()
+            ),
+            HCPackedBubbleData(
+                "Aura unknown",
+                response.auraUnknown.toInt(),
+                GradientColor("CBCBD5", "CBCBD5"),
+                response.thirdRate.toDouble()
+            ),
+            HCPackedBubbleData(
+                "No record",
+                response.noRecord.toInt(),
+                GradientColor("E9E9E9", "E9E9E9"),
+                response.fourthRate.toDouble()
+            )
         )
     }
 

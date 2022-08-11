@@ -3,9 +3,9 @@
     <string name="stacked_column_chart">Stacked Column Chart</string>
     <string name="bubble_chart">Bubble Chart</string>
     <string name="report_aura_date">%1$s ~ %2$s</string>
-    <string name="aura_comment">You entered 19 aura out of 20 seizures</string>
+    <string name="aura_comment">You entered %1$s aura out of %2$s seizures</string>
     <string name="aura_confir">Aura confirmed</string>
-    <string name="seizures">11 seizures</string>
+    <string name="seizures">%1$s seizures</string>
     <string name="no_aura_con">No aura confirmed</string>
     <string name="aura_unknown">Aura unknown</string>
     <string name="no_record">No record</string>
@@ -14,7 +14,7 @@
     <string name="some_id">73%</string>
     <string name="entries">45 entries</string>
     <string name="view_all_re">View all records ></string>
-    <string name="seizures_text">58% of seizures\noccured with aura</string>
+    <string name="seizures_text">%1$s of seizures\noccured with aura</string>
     <string name="did_you_hav">All records</string>
     <string name="nov_1_2022">Nov 1, 2022 ~ Nov 7, 2022</string>
     <string name="added_in_ea">Added in each seizure</string>

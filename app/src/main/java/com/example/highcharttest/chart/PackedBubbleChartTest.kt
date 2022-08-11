@@ -1,13 +1,10 @@
 package com.example.highcharttest.chart
 
-import android.widget.Toast
-import com.example.highcharttest.chart.data.HCDataGradient
+import com.example.highcharttest.chart.data.HCPackedBubbleData
 import com.highsoft.highcharts.common.HIColor
 import com.highsoft.highcharts.common.HIGradient
 import com.highsoft.highcharts.common.HIStop
 import com.highsoft.highcharts.common.hichartsclasses.*
-import com.highsoft.highcharts.core.HIChartContext
-import com.highsoft.highcharts.core.HIConsumer
 import com.highsoft.highcharts.core.HIFunction
 import java.util.*
 
@@ -16,7 +13,7 @@ class PackedBubbleChartTest {
 
     companion object {
 
-        fun options(inputData: List<HCDataGradient>): HIOptions {
+        fun options(inputData: List<HCPackedBubbleData>): HIOptions {
             val options = HIOptions()
 
             // export menu
@@ -54,17 +51,17 @@ class PackedBubbleChartTest {
             tooltip.backgroundColor = HIColor.initWithHexValue("000000")
             tooltip.borderWidth = 0
             tooltip.borderRadius = 8
- /*           tooltip.positioner = HIFunction("function (labelWidth, labelHeight, point) {" +
-                    "let width = chart.yAxis;"+
-                    "console.log(chart.plotLeft);"+
-                    "console.log(point.property['y']);"+
-                    "console.log(chart.yAxis);"+
-                    "console.log(chart.plotTop);"+
-                    "console.log('x : '+point.plotX);"+
-                    "console.log('y : '+(260-point.plotY));"+
-                    "console.log(labelHeight);"+
-                    "return { x:point.plotX+10-labelWidth/2,y: point.plotY -labelHeight/2-50}; }");
-*/
+            /*           tooltip.positioner = HIFunction("function (labelWidth, labelHeight, point) {" +
+                               "let width = chart.yAxis;"+
+                               "console.log(chart.plotLeft);"+
+                               "console.log(point.property['y']);"+
+                               "console.log(chart.yAxis);"+
+                               "console.log(chart.plotTop);"+
+                               "console.log('x : '+point.plotX);"+
+                               "console.log('y : '+(260-point.plotY));"+
+                               "console.log(labelHeight);"+
+                               "return { x:point.plotX+10-labelWidth/2,y: point.plotY -labelHeight/2-50}; }");
+           */
             tooltip.shadow = HIShadowOptionsObject()
             tooltip.shadow.width = 0
             tooltip.style = HICSSObject()
@@ -73,15 +70,17 @@ class PackedBubbleChartTest {
             tooltip.style.color = HIColor.initWithHexValue("888888")
             tooltip.style.fontSize = "10px"
 //            tooltip.headerFormat = ""
-            tooltip.formatter = HIFunction("function(){" +
-                    "return '" +
-                    "<div style=\"z-index:100\">" +
-                    "<div>'+this.point.name+'</div><div>" +
-                    "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
-                    "<span style=\"font-size:12px;color:#FFFFFF\">'+this.point.custom.value+' seizures</span></div>" +
-                    "</div>" +
-                    "'" +
-                    "}")
+            tooltip.formatter = HIFunction(
+                "function(){" +
+                        "return '" +
+                        "<div style=\"z-index:100\">" +
+                        "<div>'+this.point.name+'</div><div>" +
+                        "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
+                        "<span style=\"font-size:12px;color:#FFFFFF\">'+this.point.custom.value+' seizures</span></div>" +
+                        "</div>" +
+                        "'" +
+                        "}"
+            )
 //            tooltip.pointFormat = "<div>{point.name}</div><div style=\"text-align:center\">" +
 //                    "<span style=\"font-size:12px;color:#F55C5C\">• </span>" +
 //                    "<span style=\"font-size:12px;color:#FFFFFF\">{point.custom.value} seizures</span></div> "
@@ -100,20 +99,22 @@ class PackedBubbleChartTest {
 //                        "<span style=\"font-size:{point.custom.point_size}px;font-weight:500;\">" +
 //                        "{point.value:.0f}%</span>" +
 //                        "</div>"
-                formatter = HIFunction("function(){" +
-                        "return '" +
-                        "<div style = \"z-index: -1;\">" +
-                        "<div style=\"text-align:center;height:'+this.point.custom.header_size+'px;\">" +
-                        "<span style=\"font-size:'+this.point.custom.header_size+'px;\">" +
-                        "'+this.point.name+'</span>" +
-                        "</div>" +
-                        "<div style=\"text-align:center\">" +
-                        "<span style=\"font-size:'+this.point.custom.point_size+'px;font-weight:500;\">" +
-                        "'+Math.round(this.point.value)+'%</span>" +
-                        "</div>" +
-                        "</div>" +
-                        "'" +
-                        "}")
+                formatter = HIFunction(
+                    "function(){" +
+                            "return '" +
+                            "<div style = \"z-index: -1;\">" +
+                            "<div style=\"text-align:center;height:'+this.point.custom.header_size+'px;\">" +
+                            "<span style=\"font-size:'+this.point.custom.header_size+'px;\">" +
+                            "'+this.point.name+'</span>" +
+                            "</div>" +
+                            "<div style=\"text-align:center\">" +
+                            "<span style=\"font-size:'+this.point.custom.point_size+'px;font-weight:500;\">" +
+                            "'+Math.round(this.point.value)+'%</span>" +
+                            "</div>" +
+                            "</div>" +
+                            "'" +
+                            "}"
+                )
                 filter = HIFilter()
                 filter.apply {
                     property = "value"
@@ -146,7 +147,7 @@ class PackedBubbleChartTest {
                 val data = HIData()
                 data.name = it.name
                 // 퍼센트
-                data.value = (it.value.toFloat() / sumValue.toFloat()) * 100
+                data.value = it.percent
                 data.custom = HashMap<String, Any>()
                 //값
                 data.custom["value"] = it.value
@@ -154,7 +155,7 @@ class PackedBubbleChartTest {
                 data.custom["header_size"] = if (it.value == maxValue) 12 else 0
                 // point 글자크기
                 data.custom["point_size"] =
-                    if (it.value == maxValue) 24 else if (data.value.toFloat() >= 15) 14 else 0
+                    if (it.value == maxValue) 24 else if (it.percent >= 15) 14 else 0
                 // gradient color 설정
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
@@ -166,7 +167,7 @@ class PackedBubbleChartTest {
             packedBubble.layoutAlgorithm = HILayoutAlgorithm()
             packedBubble.layoutAlgorithm.gravitationalConstant = 0.02
             // bubble between distance 설정
-            packedBubble.layoutAlgorithm.bubblePadding  = 15
+            packedBubble.layoutAlgorithm.bubblePadding = 15
             // bubble size 설정
             packedBubble.maxSize = (maxValue.toFloat() / sumValue.toFloat()) * 350
             packedBubble.minSize = (minValue.toFloat() / sumValue.toFloat()) * 350
