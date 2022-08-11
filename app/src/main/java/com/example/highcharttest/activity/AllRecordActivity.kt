@@ -18,7 +18,6 @@ class AllRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.report_aura_all_records)
         binding = DataBindingUtil.setContentView(this, R.layout.report_aura_all_records)
-
         listView = findViewById(R.id.aura_list_view)
         val adapter = PieAllListAdapter(pieAllListData(weekPieData.totalTagInfoList), this)
         listView.adapter = adapter
