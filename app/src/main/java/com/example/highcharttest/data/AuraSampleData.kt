@@ -180,7 +180,6 @@ public fun pieListData(response: List<TagInfoList>): List<SampleData> {
 }
 public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
-    var sumOtherValue = 0
     val pieList: ArrayList<SampleData> = arrayListOf()
     for (i in response.indices) {
         val percent = String.format("%.0f", round(response[i].rate.toDouble())) + "%"
@@ -192,7 +191,6 @@ public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
             pieList.add(SampleData(response[i].auraTag, response[i].tagCount, 5, percent))
         }
     }
-    pieList.add(SampleData("Other", sumOtherValue, 5, String.format("%.0f", round(otherPercent)) + "%"))
     return pieList
 }
 
