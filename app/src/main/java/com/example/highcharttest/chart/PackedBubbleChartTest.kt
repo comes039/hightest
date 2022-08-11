@@ -154,7 +154,7 @@ class PackedBubbleChartTest {
                 data.custom["header_size"] = if (it.value == maxValue) 12 else 0
                 // point 글자크기
                 data.custom["point_size"] =
-                    if (it.value == maxValue) 24 else if (data.value.toFloat() > 15) 14 else 0
+                    if (it.value == maxValue) 24 else if (data.value.toFloat() >= 15) 14 else 0
                 // gradient color 설정
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.color.start)))
