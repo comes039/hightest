@@ -2,8 +2,6 @@ package com.example.highcharttest.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -13,7 +11,7 @@ import com.example.highcharttest.R
 import com.example.highcharttest.databinding.ActivityMainBinding
 import com.example.highcharttest.fragment.AuraAllRecordsFragment
 import com.example.highcharttest.fragment.BubbleFragment
-import com.example.highcharttest.fragment.StackedColumnFragment
+import com.example.highcharttest.fragment.NoReportAuraFragment
 
 class MainActivity : AppCompatActivity() {
     /**
@@ -22,8 +20,8 @@ class MainActivity : AppCompatActivity() {
      */
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewPager: ViewPager2
-    lateinit var context:Context
-    val fragmentList = listOf(BubbleFragment(),AuraAllRecordsFragment())
+    lateinit var context: Context
+    val fragmentList = listOf(BubbleFragment(), AuraAllRecordsFragment(),NoReportAuraFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -57,7 +57,7 @@ class PieChart {
 //            tooltip.pointFormat = "{point.name}: <b>{point.percentage:.1f}%</b>"
             tooltip.formatter = HIFunction("function(){" +
                     "return '" +
-                    "<div style=\"text-align:center\">'+this.point.name+'</div><div style=\"text-align:center\">" +
+                    "<div style=\"text-align:center;\">'+this.point.name+'</div><div style=\"text-align:center\">" +
                     "<span>'+Math.round(this.point.percentage)+'%</span></div>" +
                     "'" +
                     "}")

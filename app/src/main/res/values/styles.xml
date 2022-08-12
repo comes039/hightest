@@ -160,6 +160,18 @@
         </item>
 
     </style>
+    <style name="no_aura_button">
+        <item name="fontWeight">
+            500
+        </item>
+        <item name="android:textSize">
+            14sp
+        </item>
 
+        <item name="android:textColor">
+            #888888
+        </item>
+
+    </style>
 
 </resources>
