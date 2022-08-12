@@ -89,14 +89,14 @@ class BubbleFragment : Fragment() {
         return inputData
     }
 
-    public fun pieListData(response: List<TagInfoList>): List<SampleData> {
+    fun pieListData(response: List<TagInfoList>): List<SampleData> {
         var otherPercent = 100.0
         var sumOtherValue = 0
         val pieList: ArrayList<SampleData> = arrayListOf()
         for (i in response.indices) {
             if (i < 4) {
                 val percent = String.format("%.0f", round(response[i].rate.toDouble())) + "%"
-                otherPercent -= String.format("%.0f", round(response[i].rate.toDouble())).toDouble()
+                otherPercent -= String.format("%.0f", response[i].rate.toDouble()).toDouble()
                 pieList.add(SampleData(response[i].auraTag, response[i].tagCount, i + 1, percent))
             } else {
                 sumOtherValue += response[i].tagCount.toInt()
