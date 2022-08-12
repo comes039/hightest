@@ -67,10 +67,10 @@
                             android:background="@drawable/info">
 
                         <TextView
-                                android:id="@+id/nov_1_2022"
+                                android:id="@+id/all_record_date"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-                                android:text="@string/nov_1_2022"
+                                android:text="@string/all_record_date"
                                 android:textAppearance="@style/nov_1_2022"
                                 android:lineSpacingExtra="2sp"
                                 android:translationY="-0.89sp"
@@ -80,7 +80,7 @@
 
                         <TextView
                                 android:id="@+id/added_in_ea"
-                                android:layout_width="147dp"
+                                android:layout_width="160dp"
                                 android:layout_height="20dp"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="60dp"

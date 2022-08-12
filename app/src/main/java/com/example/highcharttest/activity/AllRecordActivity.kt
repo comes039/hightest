@@ -7,7 +7,9 @@ import androidx.databinding.DataBindingUtil
 import com.example.highcharttest.R
 import com.example.highcharttest.adaptor.PieAllListAdapter
 import com.example.highcharttest.data.pieAllListData
+import com.example.highcharttest.data.week
 import com.example.highcharttest.data.weekPieData
+import com.example.highcharttest.data.weekReportAuraData
 import com.example.highcharttest.databinding.ReportAuraAllRecordsBinding
 
 class AllRecordActivity : AppCompatActivity() {
@@ -18,6 +20,8 @@ class AllRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.report_aura_all_records)
         binding = DataBindingUtil.setContentView(this, R.layout.report_aura_all_records)
+        binding.allRecordDate.text = getString(R.string.all_record_date, week.startDate, week.endDate)
+        binding.device.text = getString(R.string.device,weekReportAuraData.firstRate) +"%"
         listView = findViewById(R.id.aura_list_view)
         val adapter = PieAllListAdapter(pieAllListData(weekPieData.totalTagInfoList), this)
         listView.adapter = adapter

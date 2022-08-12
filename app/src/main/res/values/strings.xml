@@ -18,7 +18,7 @@
     <string name="did_you_hav">All records</string>
     <string name="nov_1_2022">Nov 1, 2022 ~ Nov 7, 2022</string>
     <string name="added_in_ea">Added in each seizure</string>
-    <string name="device">79.1%</string>
+    <string name="device">%1$s</string>
     <string name="done">Done</string>
     <string name="title_activity_all_record">allRecordActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -29,5 +29,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="all_record_date">%1$s ~ %2$s</string>
 
 </resources>
