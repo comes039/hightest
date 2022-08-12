@@ -2,6 +2,8 @@ package com.example.highcharttest.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewPager: ViewPager2
     lateinit var context:Context
+    val fragmentList = listOf(BubbleFragment(),AuraAllRecordsFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             // Otherwise, select the previous step.
             viewPager.currentItem = viewPager.currentItem - 1
         }
+
     }
 
     /**
@@ -46,7 +50,7 @@ class MainActivity : AppCompatActivity() {
      * sequence.
      */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        val fragmentList = listOf(BubbleFragment(),AuraAllRecordsFragment())
+
         override fun getItemCount(): Int = fragmentList.size
         override fun createFragment(position: Int): Fragment = fragmentList[position]
     }
