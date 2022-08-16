@@ -17,11 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val content = this
         binding.auraButton.setOnClickListener {
-            val intent = Intent(content, AuraActivity::class.java)
+            val intent = Intent(content, ReportActivity::class.java)
+            intent.putExtra("tab_index",0)
             startActivity(intent)
         }
         binding.otherSymptomsButton.setOnClickListener {
-            val intent = Intent(content, AuraActivity::class.java)
+            val intent = Intent(content, ReportActivity::class.java)
+            intent.putExtra("tab_index",1)
             startActivity(intent)
         }
     }

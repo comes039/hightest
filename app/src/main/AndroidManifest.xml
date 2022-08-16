@@ -14,7 +14,10 @@
             android:theme="@style/Theme.HighChartTest"
             tools:targetApi="31">
         <activity
-                android:name=".activity.AuraActivity"
+                android:name=".activity.ReportActivity"
+                android:exported="true" />
+        <activity
+                android:name=".activity.OtherSymptomsActivity"
                 android:exported="true" />
         <activity
                 android:name=".activity.AllRecordActivity"

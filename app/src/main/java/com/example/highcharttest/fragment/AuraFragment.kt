@@ -19,7 +19,7 @@ import com.example.highcharttest.data.weekReportAuraData
 import com.example.highcharttest.databinding.ReportAuraBinding
 import kotlin.math.round
 
-class BubbleFragment : Fragment() {
+class AuraFragment : Fragment() {
 
     private lateinit var binding: ReportAuraBinding
 

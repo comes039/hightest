@@ -8,31 +8,38 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.highcharttest.databinding.ActivityAuraBinding
-import com.example.highcharttest.fragment.AuraAllRecordsFragment
-import com.example.highcharttest.fragment.BubbleFragment
-import com.example.highcharttest.fragment.NoReportAuraFragment
+import com.example.highcharttest.databinding.ActivityReportBinding
+import com.example.highcharttest.fragment.AuraFragment
+import com.example.highcharttest.fragment.OtherSymptomsFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class AuraActivity : AppCompatActivity() {
+class ReportActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
-    private lateinit var binding: ActivityAuraBinding
+    private lateinit var binding: ActivityReportBinding
     lateinit var context: Context
-    val fragmentList = listOf(BubbleFragment(), AuraAllRecordsFragment(), NoReportAuraFragment())
+    val fragmentList = listOf(AuraFragment(), OtherSymptomsFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAuraBinding.inflate(layoutInflater)
+        binding = ActivityReportBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
         val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager, lifecycle)
+        val tabIndex = intent.getIntExtra("tab_index", 0)
+
         viewPager.adapter = pagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = "TAB $position"
-
         }.attach()
+
+        println("tab_index = $tabIndex")
+        if (tabIndex == 0) {
+            viewPager.currentItem = 0
+        } else if (tabIndex == 1) {
+            viewPager.currentItem = 1
+        }
+
     }
 
     override fun onBackPressed() {

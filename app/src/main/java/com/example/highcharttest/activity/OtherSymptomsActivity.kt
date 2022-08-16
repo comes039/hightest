@@ -8,10 +8,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.highcharttest.databinding.ActivityAuraBinding
 import com.example.highcharttest.databinding.ActivityOtherSymptomsBinding
 import com.example.highcharttest.fragment.AuraAllRecordsFragment
-import com.example.highcharttest.fragment.BubbleFragment
+import com.example.highcharttest.fragment.AuraFragment
 import com.example.highcharttest.fragment.NoReportAuraFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -19,7 +18,7 @@ class OtherSymptomsActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
     private lateinit var binding: ActivityOtherSymptomsBinding
     lateinit var context: Context
-    val fragmentList = listOf(BubbleFragment(), AuraAllRecordsFragment(), NoReportAuraFragment())
+    val fragmentList = listOf(AuraFragment(), AuraAllRecordsFragment(), NoReportAuraFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtherSymptomsBinding.inflate(layoutInflater)
