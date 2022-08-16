@@ -8,25 +8,26 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.highcharttest.databinding.ActivityReportBinding
+import com.example.highcharttest.databinding.ActivityAuraBinding
+import com.example.highcharttest.databinding.ActivityOtherSymptomsBinding
 import com.example.highcharttest.fragment.AuraAllRecordsFragment
 import com.example.highcharttest.fragment.BubbleFragment
 import com.example.highcharttest.fragment.NoReportAuraFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class ReportActivity : AppCompatActivity() {
+class OtherSymptomsActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
-    private lateinit var binding: ActivityReportBinding
+    private lateinit var binding: ActivityOtherSymptomsBinding
     lateinit var context: Context
     val fragmentList = listOf(BubbleFragment(), AuraAllRecordsFragment(), NoReportAuraFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityReportBinding.inflate(layoutInflater)
+        binding = ActivityOtherSymptomsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
-        val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager,lifecycle)
+        val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = pagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -51,7 +52,8 @@ class ReportActivity : AppCompatActivity() {
      * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in
      * sequence.
      */
-    private inner class ScreenSlidePagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle) {
+    private inner class ScreenSlidePagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+        FragmentStateAdapter(fragmentManager, lifecycle) {
         override fun getItemCount(): Int = fragmentList.size
         override fun createFragment(position: Int): Fragment = fragmentList[position]
     }

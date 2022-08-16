@@ -16,7 +16,22 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:layout_marginEnd="20dp"
+                android:text="@string/button_aura"
+                android:textAppearance="@style/no_aura_button"
+                android:background="@drawable/no_aura_button">
+
+        </Button>
+        <Button
+                android:id="@+id/other_symptoms_button"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="220dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/button_symptoms"
+                android:textAppearance="@style/no_aura_button"
+                android:background="@drawable/no_aura_button">
 
         </Button>
     </RelativeLayout>

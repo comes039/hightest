@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroundColor"
-        tools:context=".activity.ReportActivity">
+        tools:context=".activity.AuraActivity">
 
     <LinearLayout
             android:layout_width="match_parent"

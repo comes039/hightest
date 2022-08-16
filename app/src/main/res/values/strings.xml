@@ -33,5 +33,7 @@
     <string name="no_aura_text">No aura recorded\nduring this period.\nAdd any missed record!</string>
     <string name="no_aura_comment">Your input enables us to analyze and\ngenerate reports on your aura pattern.</string>
     <string name="no_aura_button">Go to record</string>
+    <string name="button_aura">Aura</string>
+    <string name="button_symptoms">other symptoms</string>
 
 </resources>

@@ -17,7 +17,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val content = this
         binding.auraButton.setOnClickListener {
-            val intent = Intent(content, ReportActivity::class.java)
+            val intent = Intent(content, AuraActivity::class.java)
+            startActivity(intent)
+        }
+        binding.otherSymptomsButton.setOnClickListener {
+            val intent = Intent(content, AuraActivity::class.java)
             startActivity(intent)
         }
     }
