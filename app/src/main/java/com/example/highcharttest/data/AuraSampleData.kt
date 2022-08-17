@@ -7,28 +7,28 @@ import java.util.*
 import kotlin.math.round
 
 
-class getDate(
+class GetDate(
     val startDate: String,
     val endDate: String
 )
 
 
-val format = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH)
+val format = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH)!!
 
 // 7days
-val week = getDate(
+val week = GetDate(
     LocalDate.now().minusWeeks(1).plusDays(1).format(format),
     LocalDate.now().format(format)
 )
 
 // 1month
-val month = getDate(
+val month = GetDate(
     LocalDate.now().minusMonths(1).format(format),
     LocalDate.now().format(format)
 )
 
 // 3 month
-val threeMonth = getDate(
+val threeMonth = GetDate(
     LocalDate.now().minusMonths(3).format(format),
     LocalDate.now().format(format)
 )
@@ -37,10 +37,10 @@ val weekReportAuraData = ReportAuraResponse(
     9,
     1,
     listOf(
-        ReportAuraInfo("HA001", "Aura confirmed", 9, 34.6),
-        ReportAuraInfo("HA002", "No aura confirmed", 5, 19.2),
-        ReportAuraInfo("HA003", "Aura unknown", 4, 15.4),
-        ReportAuraInfo("HA004", "No record", 8, 30.8)
+        ReportAuraInfo("HA001", "Had aura", 9, 34.6),
+        ReportAuraInfo("HA002", "No aura", 5, 19.2),
+        ReportAuraInfo("HA003", "Unknown", 4, 15.4),
+        ReportAuraInfo("HA004", "Skip", 8, 30.8)
     )
 
 )
@@ -49,10 +49,10 @@ val monthReportAuraData = ReportAuraResponse(
     45,
     1,
     listOf(
-        ReportAuraInfo("HA001", "Aura confirmed", 45, 38.5),
-        ReportAuraInfo("HA002", "No aura confirmed", 22, 18.8),
-        ReportAuraInfo("HA003", "Aura unknown", 19, 13.6),
-        ReportAuraInfo("HA004", "No record", 31, 29.1)
+        ReportAuraInfo("HA001", "Had aura", 45, 38.5),
+        ReportAuraInfo("HA002", "No aura", 22, 18.8),
+        ReportAuraInfo("HA003", "Unknown", 19, 13.6),
+        ReportAuraInfo("HA004", "Skip", 31, 29.1)
     )
 
 )
@@ -61,14 +61,14 @@ val threeMonthReportAuraData = ReportAuraResponse(
     124,
     1,
     listOf(
-        ReportAuraInfo("HA001", "Aura confirmed", 124, 45.9),
-        ReportAuraInfo("HA002", "No aura confirmed", 41, 15.2),
-        ReportAuraInfo("HA003", "Aura unknown", 32, 11.9),
-        ReportAuraInfo("HA004", "No record", 73, 27.0)
+        ReportAuraInfo("HA001", "Had aura", 124, 45.9),
+        ReportAuraInfo("HA002", "No aura", 41, 15.2),
+        ReportAuraInfo("HA003", "Unknown", 32, 11.9),
+        ReportAuraInfo("HA004", "Skip", 73, 27.0)
     )
 
 )
-public val weekPieData = ReportAuraTagResponse(
+val weekAuraReportTagData = ReportAuraTagResponse(
     1, 34.6, 7, listOf(
         TagInfoList(1, 78, "Double vision", 45, 57.6),
         TagInfoList(1, 78, "Headache", 11, 14.1),
@@ -79,7 +79,7 @@ public val weekPieData = ReportAuraTagResponse(
         TagInfoList(1, 78, "Tiredness", 2, 2.5),
     )
 )
-val monthPieData = ReportAuraTagResponse(
+val monthAuraReportTagData = ReportAuraTagResponse(
     1, 34.6, 7, listOf(
         TagInfoList(1, 78, "Double vision", 45 * 2, 57.6),
         TagInfoList(1, 78, "Headache", 11 * 2, 14.1),
@@ -90,7 +90,7 @@ val monthPieData = ReportAuraTagResponse(
         TagInfoList(1, 78, "Tiredness", 2 * 2, 2.5),
     )
 )
-val threeMonthPieData = ReportAuraTagResponse(
+val threeAuraReportTagData = ReportAuraTagResponse(
     1, 34.6, 7, listOf(
         TagInfoList(1, 78, "Double vision", 45 * 6, 57.6),
         TagInfoList(1, 78, "Headache", 11 * 6, 14.1),
@@ -101,7 +101,7 @@ val threeMonthPieData = ReportAuraTagResponse(
         TagInfoList(1, 78, "Tiredness", 2 * 6, 2.5),
     )
 )
-val colorList = listOf(
+val pieColorList = listOf(
     GradientColor("F16899", "F4B2D5"),
     GradientColor("696A73", "696A73"),
     GradientColor("A0A0A0", "A0A0A0"),
@@ -114,16 +114,16 @@ fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
     var sumOtherValue = 0
     for (i in response.indices) {
         if (i < 4) {
-            inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, colorList[i]))
+            inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, pieColorList[i]))
         } else {
             sumOtherValue += response[i].tagCount.toInt()
         }
     }
-    inputData.add(HCDataGradient("Other", sumOtherValue, colorList[4]))
+    inputData.add(HCDataGradient("Other", sumOtherValue, pieColorList[4]))
     return inputData
 }
 
-public fun pieListData(response: List<TagInfoList>): List<SampleData> {
+fun pieListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
     var sumOtherValue = 0
     val pieList: ArrayList<SampleData> = arrayListOf()
@@ -140,7 +140,7 @@ public fun pieListData(response: List<TagInfoList>): List<SampleData> {
     return pieList
 }
 
-public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
+fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
     val pieList: ArrayList<SampleData> = arrayListOf()
     for (i in response.indices) {
@@ -156,10 +156,10 @@ public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     return pieList
 }
 
-/*
+/**
  * 순서 HA001->HA002->HA003->HA004
  */
-public fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
+fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
     val reportAuraInfoList = response.reportAuraInfoList
     val hcPackedBubbleDataList = ArrayList<HCPackedBubbleData>()
     for (i in reportAuraInfoList.indices) {
@@ -178,12 +178,15 @@ public fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBub
 val auraColorList: List<GradientColor> = listOf(
     GradientColor("F16899", "F4B2D5"), GradientColor("9697A5", "9697A5"), GradientColor("CBCBD5", "CBCBD5"), GradientColor("E9E9E9", "E9E9E9")
 )
-fun getAuraStatusName(auraStatusCode:String):String{
-    return when(auraStatusCode){
-        "HA001"->"Aura confirmed"
-        "HA002"->"No aura confirmed"
-        "HA003"->"Aura unknown"
-        "HA004"->"No record"
-        else->{""}
+
+fun getAuraStatusName(auraStatusCode: String): String {
+    return when (auraStatusCode) {
+        "HA001" -> "Aura confirmed"
+        "HA002" -> "No aura confirmed"
+        "HA003" -> "Aura unknown"
+        "HA004" -> "No record"
+        else -> {
+            ""
+        }
     }
 }

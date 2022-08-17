@@ -8,7 +8,7 @@ import com.example.highcharttest.R
 import com.example.highcharttest.adaptor.PieAllListAdapter
 import com.example.highcharttest.data.pieAllListData
 import com.example.highcharttest.data.week
-import com.example.highcharttest.data.weekPieData
+import com.example.highcharttest.data.weekAuraReportTagData
 import com.example.highcharttest.data.weekReportAuraData
 import com.example.highcharttest.databinding.ReportAuraAllRecordsBinding
 
@@ -29,7 +29,7 @@ class AllRecordActivity : AppCompatActivity() {
         binding.icoArrowL.setOnClickListener {
             onBackPressed()
         }
-        val adapter = PieAllListAdapter(pieAllListData(weekPieData.totalTagInfoList), this)
+        val adapter = PieAllListAdapter(pieAllListData(weekAuraReportTagData.totalTagInfoList), this)
         listView.adapter = adapter
     }
 }
