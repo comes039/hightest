@@ -12,10 +12,7 @@ import com.example.highcharttest.adaptor.PieListAdapter
 import com.example.highcharttest.chart.PackedBubbleChartTest
 import com.example.highcharttest.chart.PieChart
 import com.example.highcharttest.chart.data.*
-import com.example.highcharttest.data.colorList
-import com.example.highcharttest.data.week
-import com.example.highcharttest.data.weekPieData
-import com.example.highcharttest.data.weekReportAuraData
+import com.example.highcharttest.data.*
 import com.example.highcharttest.databinding.ReportAuraBinding
 import kotlin.math.round
 
@@ -32,7 +29,7 @@ class AuraFragment : Fragment() {
         val context = this.context
         val adapter = PieListAdapter(pieListData(weekPieData.totalTagInfoList), context)
         binding.listView.adapter = adapter
-        val titlePercent = String.format("%.0f", weekReportAuraData.firstRate.toDouble()) + "%"
+        val titlePercent = String.format("%.0f", round(weekReportAuraData.reportAuraInfoList[0].auraRate.toDouble())) + "%"
         // 기본값 week 로설정
         binding.date.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
         binding.pieDate.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
@@ -47,11 +44,11 @@ class AuraFragment : Fragment() {
             weekReportAuraData.haveAuraTotalCount,
             weekReportAuraData.seizureTotalCount
         )
-        binding.auraConfirmed.text = getString(R.string.seizures, weekReportAuraData.auraConfirmed)
+        binding.auraConfirmed.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[0].count)
         binding.noAuraConfirmed.text =
-            getString(R.string.seizures, weekReportAuraData.noAuraConfirmed)
-        binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.auraUnknown)
-        binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.noRecord)
+            getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[1].count)
+        binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[2].count)
+        binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[3].count)
         binding.pieTitle.text = getString(R.string.pie_string, weekPieData.totalTagInfoList[0].auraTag)
         binding.viewAllRe.setOnClickListener {
 
@@ -75,53 +72,11 @@ class AuraFragment : Fragment() {
         binding.pieChart.options = PieChart.options(pieChartData(response.totalTagInfoList))
     }
 
-    private fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
-        val inputData: ArrayList<HCDataGradient> = ArrayList()
-        var sumOtherValue = 0
-        for (i in response.indices) {
-            if (i < 4) {
-                inputData.add(HCDataGradient(response[i].auraTag, response[i].tagCount, colorList[i]))
-            } else {
-                sumOtherValue += response[i].tagCount.toInt()
-            }
-        }
-        inputData.add(HCDataGradient("Other", sumOtherValue, colorList[4]))
-        return inputData
-    }
 
-    fun pieListData(response: List<TagInfoList>): List<SampleData> {
-        var otherPercent = 100.0
-        var sumOtherValue = 0
-        val pieList: ArrayList<SampleData> = arrayListOf()
-        for (i in response.indices) {
-            if (i < 4) {
-                val percent = String.format("%.0f", round(response[i].rate.toDouble())) + "%"
-                otherPercent -= String.format("%.0f", response[i].rate.toDouble()).toDouble()
-                pieList.add(SampleData(response[i].auraTag, response[i].tagCount, i + 1, percent))
-            } else {
-                sumOtherValue += response[i].tagCount.toInt()
-            }
-        }
-        pieList.add(SampleData("Other", sumOtherValue, 5, String.format("%.0f", round(otherPercent)) + "%"))
-        return pieList
-    }
 
-    private fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
-        return listOf(
-            HCPackedBubbleData(
-                "Aura confirmed", response.auraConfirmed.toInt(), GradientColor("F16899", "F4B2D5"), response.firstRate.toDouble()
-            ),
-            HCPackedBubbleData(
-                "No aura confirmed", response.noAuraConfirmed.toInt(), GradientColor("9697A5", "9697A5"), response.secondRate.toDouble()
-            ),
-            HCPackedBubbleData(
-                "Aura unknown", response.auraUnknown.toInt(), GradientColor("CBCBD5", "CBCBD5"), response.thirdRate.toDouble()
-            ),
-            HCPackedBubbleData(
-                "No record", response.noRecord.toInt(), GradientColor("E9E9E9", "E9E9E9"), response.fourthRate.toDouble()
-            )
-        )
-    }
+
+
+
 
 
 }

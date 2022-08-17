@@ -21,7 +21,7 @@ class AllRecordActivity : AppCompatActivity() {
         setContentView(R.layout.report_aura_all_records)
         binding = DataBindingUtil.setContentView(this, R.layout.report_aura_all_records)
         binding.allRecordDate.text = getString(R.string.all_record_date, week.startDate, week.endDate)
-        binding.device.text = getString(R.string.device, weekReportAuraData.firstRate) + "%"
+        binding.device.text = getString(R.string.device, weekReportAuraData.reportAuraInfoList[0].auraRate) + "%"
         listView = findViewById(R.id.aura_list_view)
         binding.boxActive.setOnClickListener {
             onBackPressed()

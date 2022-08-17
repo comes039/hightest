@@ -35,76 +35,37 @@ val threeMonth = getDate(
 val weekReportAuraData = ReportAuraResponse(
     26,
     9,
-    null,
-    null,
-    null,
     1,
-    "HA001",
-    "Had Aura",
-    "9",
-    "34.6",
-    "HA004",
-    "Skip",
-    "8",
-    "30.8",
-    "HA002",
-    "No aura",
-    "5",
-    "19.2",
-    "HA003",
-    "Unknown",
-    "4",
-    "15.4"
+    listOf(
+        ReportAuraInfo("HA001", "Aura confirmed", 9, 34.6),
+        ReportAuraInfo("HA002", "No aura confirmed", 5, 19.2),
+        ReportAuraInfo("HA003", "Aura unknown", 4, 15.4),
+        ReportAuraInfo("HA004", "No record", 8, 30.8)
+    )
 
 )
 val monthReportAuraData = ReportAuraResponse(
     84,
     45,
-    null,
-    null,
-    null,
     1,
-    "HA001",
-    "Had Aura",
-    "45",
-    "38.5",
-    "HA004",
-    "Skip",
-    "31",
-    "29.1",
-    "HA002",
-    "No aura",
-    "22",
-    "18.8",
-    "HA003",
-    "Unknown",
-    "19",
-    "13.6"
+    listOf(
+        ReportAuraInfo("HA001", "Aura confirmed", 45, 38.5),
+        ReportAuraInfo("HA002", "No aura confirmed", 22, 18.8),
+        ReportAuraInfo("HA003", "Aura unknown", 19, 13.6),
+        ReportAuraInfo("HA004", "No record", 31, 29.1)
+    )
 
 )
 val threeMonthReportAuraData = ReportAuraResponse(
     252,
     124,
-    null,
-    null,
-    null,
     1,
-    "HA001",
-    "Had Aura",
-    "124",
-    "45.9",
-    "HA004",
-    "Skip",
-    "73",
-    "27.0",
-    "HA002",
-    "No aura",
-    "41",
-    "15.2",
-    "HA003",
-    "Unknown",
-    "32",
-    "11.9"
+    listOf(
+        ReportAuraInfo("HA001", "Aura confirmed", 124, 45.9),
+        ReportAuraInfo("HA002", "No aura confirmed", 41, 15.2),
+        ReportAuraInfo("HA003", "Aura unknown", 32, 11.9),
+        ReportAuraInfo("HA004", "No record", 73, 27.0)
+    )
 
 )
 public val weekPieData = ReportAuraTagResponse(
@@ -148,7 +109,7 @@ val colorList = listOf(
     GradientColor("E9E9E9", "E9E9E9"),
 )
 
-private fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
+fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
     val inputData: ArrayList<HCDataGradient> = ArrayList()
     var sumOtherValue = 0
     for (i in response.indices) {
@@ -178,6 +139,7 @@ public fun pieListData(response: List<TagInfoList>): List<SampleData> {
     pieList.add(SampleData("Other", sumOtherValue, 5, String.format("%.0f", round(otherPercent)) + "%"))
     return pieList
 }
+
 public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
     val pieList: ArrayList<SampleData> = arrayListOf()
@@ -194,19 +156,34 @@ public fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     return pieList
 }
 
-private fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
-    return listOf(
-        HCPackedBubbleData(
-            "Aura confirmed", response.auraConfirmed.toInt(), GradientColor("F16899", "F4B2D5"), response.firstRate.toDouble()
-        ),
-        HCPackedBubbleData(
-            "No aura confirmed", response.noAuraConfirmed.toInt(), GradientColor("9697A5", "9697A5"), response.secondRate.toDouble()
-        ),
-        HCPackedBubbleData(
-            "Aura unknown", response.auraUnknown.toInt(), GradientColor("CBCBD5", "CBCBD5"), response.thirdRate.toDouble()
-        ),
-        HCPackedBubbleData(
-            "No record", response.noRecord.toInt(), GradientColor("E9E9E9", "E9E9E9"), response.fourthRate.toDouble()
+/*
+ * 순서 HA001->HA002->HA003->HA004
+ */
+public fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
+    val reportAuraInfoList = response.reportAuraInfoList
+    val hcPackedBubbleDataList = ArrayList<HCPackedBubbleData>()
+    for (i in reportAuraInfoList.indices) {
+        hcPackedBubbleDataList.add(
+            HCPackedBubbleData(
+                getAuraStatusName(reportAuraInfoList[i].haveAuraStatus),
+                reportAuraInfoList[i].count,
+                auraColorList[i],
+                reportAuraInfoList[i].auraRate.toDouble()
+            )
         )
-    )
+    }
+    return hcPackedBubbleDataList
+}
+
+val auraColorList: List<GradientColor> = listOf(
+    GradientColor("F16899", "F4B2D5"), GradientColor("9697A5", "9697A5"), GradientColor("CBCBD5", "CBCBD5"), GradientColor("E9E9E9", "E9E9E9")
+)
+fun getAuraStatusName(auraStatusCode:String):String{
+    return when(auraStatusCode){
+        "HA001"->"Aura confirmed"
+        "HA002"->"No aura confirmed"
+        "HA003"->"Aura unknown"
+        "HA004"->"No record"
+        else->{""}
+    }
 }

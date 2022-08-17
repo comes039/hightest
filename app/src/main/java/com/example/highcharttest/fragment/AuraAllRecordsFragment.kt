@@ -29,7 +29,7 @@ class AuraAllRecordsFragment : Fragment() {
         binding.allRecordDate.text = getString(R.string.all_record_date, week.startDate, week.endDate)
         val context = this.context
         val adapter = PieAllListAdapter(pieAllListData(weekPieData.totalTagInfoList), context)
-        binding.device.text = getString(R.string.device, weekReportAuraData.firstRate) +"%"
+        binding.device.text = getString(R.string.device, weekReportAuraData.reportAuraInfoList[0].auraRate) +"%"
         binding.boxActive.setOnClickListener {
             requireActivity().onBackPressed()
         }

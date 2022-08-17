@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
         tools:context=".activity.MainActivity">
 
     <ScrollView
@@ -33,43 +34,102 @@
                     android:textColor="#888888" />
 
             <TextView
-                    android:id="@+id/bubble_title"
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginStart="40dp"
                     android:textFontWeight="500"
-                    android:text="@string/seizures_text"
+                    android:text="@string/other_symptoms_text"
+                    android:textSize="24sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/dmsansregular"
+                    android:textColor="#000000" />
+            <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="40dp"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:progress="25"
+                    android:id="@+id/progress1" />
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="381dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/list_legend">
+
+                <ListView
+                        android:id="@+id/list_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:scrollbars="none"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        android:dividerHeight="20dp"
+                        android:nestedScrollingEnabled="false" />
+
+                <View
+                        android:id="@+id/div"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="320dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/div" />
+
+                <TextView
+                        android:id="@+id/view_all_re"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="@string/view_all_re"
+                        android:textAppearance="@style/view_all_re"
+                        android:lineSpacingExtra="2sp"
+                        android:translationY="-0.89sp"
+                        android:textFontWeight="500"
+                        android:layout_marginTop="341dp"
+                        android:gravity="top|center" />
+
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/bar_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/report_aura_date"
+                    android:textSize="12sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/dmsansregular"
+                    android:textColor="#888888" />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="40dp"
+                    android:textFontWeight="500"
+                    android:text="Other symptoms trend"
                     android:textSize="24sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
                     android:textColor="#000000" />
 
-            <TextView
-                    android:id="@+id/bubble_comment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="40dp"
-                    android:text="@string/aura_comment"
-                    android:textSize="14sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/dmsansregular"
-                    android:textColor="#888888" />
-
             <com.highsoft.highcharts.core.HIChartView
-                    android:id="@+id/bubble_chart"
+                    android:id="@+id/stacked_column_chart"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp" />
-
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="277dp"
+                    android:layout_marginTop="40dp" />
             <RelativeLayout
                     android:id="@+id/info_legend"
-                    android:layout_width="320dp"
-                    android:layout_height="134dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="104dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -105,16 +165,6 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="76dp"
                         android:background="@drawable/box_gray_white" />
-
-                <View
-                        android:id="@+id/no_record_box"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="102dp"
-                        android:background="@drawable/box_white" />
 
                 <!-- aura text-->
                 <TextView
@@ -159,19 +209,6 @@
                         android:fontFamily="@font/dmsansregular"
                         android:gravity="top" />
 
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="16dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="36dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="98dp"
-                        android:text="@string/no_record"
-                        android:textAppearance="@style/aura_confir"
-                        android:lineSpacingExtra="0sp"
-                        android:translationY="-0.19sp"
-                        android:fontFamily="@font/dmsansregular"
-                        android:gravity="top" />
                 <!--seizures text-->
                 <TextView
                         android:id="@+id/aura_confirmed"
@@ -179,14 +216,15 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="20dp"
-                        android:text="@string/seizures"
+                        android:text="@string/entries"
                         android:textAppearance="@style/seizures"
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
                 <TextView
                         android:id="@+id/no_aura_confirmed"
@@ -194,14 +232,15 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="46dp"
-                        android:text="@string/seizures"
+                        android:text="@string/entries"
                         android:textAppearance="@style/seizures"
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
                 <TextView
                         android:id="@+id/aura_unknown"
@@ -211,107 +250,37 @@
                         android:layout_marginStart="242dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="72dp"
-                        android:text="@string/seizures"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/entries"
                         android:textAppearance="@style/seizures"
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
-                <TextView
-                        android:id="@+id/no_record"
-                        android:layout_width="match_parent"
-                        android:layout_height="16dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="242dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="98dp"
-                        android:text="@string/seizures"
-                        android:textAppearance="@style/seizures"
-                        android:lineSpacingExtra="0sp"
-                        android:translationY="-0.19sp"
-                        android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+
 
             </RelativeLayout>
-
-            <TextView
-                    android:id="@+id/pie_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="120dp"
-                    android:layout_marginStart="40dp"
-                    android:text="@string/report_aura_date"
-                    android:textSize="12sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/dmsansregular"
-                    android:textColor="#888888" />
-
-            <TextView
-                    android:id="@+id/pie_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="40dp"
-                    android:text="@string/pie_string"
-                    android:textSize="24sp"
-                    android:textFontWeight="500"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/dmsansregular"
-                    android:textColor="#000000" />
-
-            <com.highsoft.highcharts.core.HIChartView
-                    android:id="@+id/pie_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp" />
-
             <RelativeLayout
-                    android:layout_width="320dp"
-                    android:layout_height="381dp"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginEnd="45dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/list_legend">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <ListView
-                        android:id="@+id/list_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                <RelativeLayout
+                        android:id="@+id/some_id"
+                        android:layout_width="216dp"
+                        android:layout_height="142dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginStart="20dp"
-                        android:scrollbars="none"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginTop="20dp"
-                        android:dividerHeight="20dp"
-                        android:nestedScrollingEnabled="false" />
+                        android:background="@drawable/some_id" />
 
-                <View
-                        android:id="@+id/div"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="320dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/div" />
-
-                <TextView
-                        android:id="@+id/view_all_re"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:text="@string/view_all_re"
-                        android:textAppearance="@style/view_all_re"
-                        android:lineSpacingExtra="2sp"
-                        android:translationY="-0.89sp"
-                        android:textFontWeight="500"
-                        android:layout_marginTop="341dp"
-                        android:layout_marginStart="97.5dp"
-                        android:gravity="top" />
-
+                <RelativeLayout
+                        android:layout_width="216dp"
+                        android:layout_height="142dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="246dp"
+                        android:gravity="end"
+                        android:background="@drawable/some_id2" />
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
