@@ -15,6 +15,9 @@ class GetDate(
 
 val format = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH)!!
 
+/**
+ * DAY CONDITION
+ */
 // 7days
 val week = GetDate(
     LocalDate.now().minusWeeks(1).plusDays(1).format(format),
@@ -32,6 +35,10 @@ val threeMonth = GetDate(
     LocalDate.now().minusMonths(3).format(format),
     LocalDate.now().format(format)
 )
+
+/**
+ * REPORT-AURA SAMPLE DATA
+ */
 val weekReportAuraData = ReportAuraResponse(
     26,
     9,
@@ -101,6 +108,85 @@ val threeAuraReportTagData = ReportAuraTagResponse(
         TagInfoList(1, 78, "Tiredness", 2 * 6, 2.5),
     )
 )
+
+/**
+ * REPORT OTHER SYMPTOM SAMPLE DATA
+ */
+val weekReportOtherSymptomData = ReportOtherSymptomResponse(
+    17.0,
+    9.5,
+    listOf(
+        ReportOtherSymptomInfo("Memory issue", 23, 48.9),
+        ReportOtherSymptomInfo("Weight change", 11, 23.4),
+        ReportOtherSymptomInfo("Dizziness", 7, 14.9),
+        ReportOtherSymptomInfo("Blurred vision", 4, 8.5),
+        ReportOtherSymptomInfo("Upset stomach", 1, 2.1),
+        ReportOtherSymptomInfo("Sleep issue", 1, 2.1)
+    ),
+    ReportOtherSymptomInfo("Others", 2, 4.3)
+
+)
+val monthReportOtherSymptomData = ReportAuraResponse(
+    84,
+    45,
+    1,
+    listOf(
+        ReportAuraInfo("HA001", "Had aura", 45, 38.5),
+        ReportAuraInfo("HA002", "No aura", 22, 18.8),
+        ReportAuraInfo("HA003", "Unknown", 19, 13.6),
+        ReportAuraInfo("HA004", "Skip", 31, 29.1)
+    )
+
+)
+val threeMonthReportOtherSymptomData = ReportAuraResponse(
+    252,
+    124,
+    1,
+    listOf(
+        ReportAuraInfo("HA001", "Had aura", 124, 45.9),
+        ReportAuraInfo("HA002", "No aura", 41, 15.2),
+        ReportAuraInfo("HA003", "Unknown", 32, 11.9),
+        ReportAuraInfo("HA004", "Skip", 73, 27.0)
+    )
+
+)
+val weekReportOtherSymptomTagData = ReportAuraTagResponse(
+    1, 34.6, 7, listOf(
+        TagInfoList(1, 78, "Double vision", 45, 57.6),
+        TagInfoList(1, 78, "Headache", 11, 14.1),
+        TagInfoList(1, 78, "Unknown", 8, 10.2),
+        TagInfoList(1, 78, "Anxiety", 5, 6.4),
+        TagInfoList(1, 78, "Upset stomach", 4, 5.1),
+        TagInfoList(1, 78, "Sleep issue", 3, 3.8),
+        TagInfoList(1, 78, "Tiredness", 2, 2.5),
+    )
+)
+val monthReportOtherSymptomTagData = ReportAuraTagResponse(
+    1, 34.6, 7, listOf(
+        TagInfoList(1, 78, "Double vision", 45 * 2, 57.6),
+        TagInfoList(1, 78, "Headache", 11 * 2, 14.1),
+        TagInfoList(1, 78, "Unknown", 8 * 2, 10.2),
+        TagInfoList(1, 78, "Anxiety", 5 * 2, 6.4),
+        TagInfoList(1, 78, "Upset stomach", 4 * 2, 5.1),
+        TagInfoList(1, 78, "Sleep issue", 3 * 2, 3.8),
+        TagInfoList(1, 78, "Tiredness", 2 * 2, 2.5),
+    )
+)
+val threeReportOtherSymptomTagData = ReportAuraTagResponse(
+    1, 34.6, 7, listOf(
+        TagInfoList(1, 78, "Double vision", 45 * 6, 57.6),
+        TagInfoList(1, 78, "Headache", 11 * 6, 14.1),
+        TagInfoList(1, 78, "Unknown", 8 * 6, 10.2),
+        TagInfoList(1, 78, "Anxiety", 5 * 6, 6.4),
+        TagInfoList(1, 78, "Upset stomach", 4 * 6, 5.1),
+        TagInfoList(1, 78, "Sleep issue", 3 * 6, 3.8),
+        TagInfoList(1, 78, "Tiredness", 2 * 6, 2.5),
+    )
+)
+
+/**
+ * PIE CHART 데이터 생성
+ */
 val pieColorList = listOf(
     GradientColor("F16899", "F4B2D5"),
     GradientColor("696A73", "696A73"),
@@ -123,7 +209,11 @@ fun pieChartData(response: List<TagInfoList>): List<HCDataGradient> {
     return inputData
 }
 
-fun pieListData(response: List<TagInfoList>): List<SampleData> {
+/**
+ * LISTVIEW 데이터 생성
+ */
+// Aura listView data
+fun auraListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
     var sumOtherValue = 0
     val pieList: ArrayList<SampleData> = arrayListOf()
@@ -136,11 +226,11 @@ fun pieListData(response: List<TagInfoList>): List<SampleData> {
             sumOtherValue += response[i].tagCount.toInt()
         }
     }
-    pieList.add(SampleData("Other", sumOtherValue, 5, String.format("%.0f", round(otherPercent)) + "%"))
+    pieList.add(SampleData("Other", sumOtherValue, 0, String.format("%.0f", round(otherPercent)) + "%"))
     return pieList
 }
 
-fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
+fun auraAllListData(response: List<TagInfoList>): List<SampleData> {
     var otherPercent = 100.0
     val pieList: ArrayList<SampleData> = arrayListOf()
     for (i in response.indices) {
@@ -156,8 +246,23 @@ fun pieAllListData(response: List<TagInfoList>): List<SampleData> {
     return pieList
 }
 
+// OtherSymptom listView data
+fun otherSymptomListData(response: ReportOtherSymptomResponse): List<SampleData> {
+    val sampleDataList: ArrayList<SampleData> = arrayListOf()
+    for (i in response.totalList.indices) {
+        if (i < 4) {
+            val percent = String.format("%.0f", round(response.totalList[i].rate.toDouble())) + "%"
+            sampleDataList.add(SampleData(response.totalList[i].name, response.totalList[i].count, if (i == 0) 5 else i + 1, percent))
+        }
+    }
+    sampleDataList.add(SampleData(response.others.name, response.others.count, 0, String.format("%.0f", round(response.others.rate.toDouble())) + "%"))
+    return sampleDataList
+}
+
 /**
- * 순서 HA001->HA002->HA003->HA004
+ *  버블차트 데이터생성
+ *
+ *  순서 HA001->HA002->HA003->HA004
  */
 fun packedBubbleChartData(response: ReportAuraResponse): List<HCPackedBubbleData> {
     val reportAuraInfoList = response.reportAuraInfoList

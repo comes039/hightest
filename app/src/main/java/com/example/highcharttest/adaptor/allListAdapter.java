@@ -16,12 +16,12 @@ import com.example.highcharttest.chart.data.SampleData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieAllListAdapter extends BaseAdapter {
+public class allListAdapter extends BaseAdapter {
 
 	private List<SampleData> sampleDataList;
 	public Context context;
 
-	public PieAllListAdapter(@NonNull List<SampleData> sampleDataList, Context context) {
+	public allListAdapter(@NonNull List<SampleData> sampleDataList, Context context) {
 		this.sampleDataList = new ArrayList<>(sampleDataList);
 		this.context = context;
 	}

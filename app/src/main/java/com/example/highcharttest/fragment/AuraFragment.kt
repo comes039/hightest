@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
 import com.example.highcharttest.activity.AllRecordActivity
-import com.example.highcharttest.adaptor.PieListAdapter
+import com.example.highcharttest.adaptor.listAdapter
 import com.example.highcharttest.chart.PackedBubbleChartTest
 import com.example.highcharttest.chart.PieChart
 import com.example.highcharttest.chart.data.ReportAuraResponse
@@ -28,7 +28,7 @@ class AuraFragment : Fragment() {
     ): View {
         binding = ReportAuraBinding.inflate(layoutInflater)
         val context = this.context
-        val adapter = PieListAdapter(pieListData(weekAuraReportTagData.totalTagInfoList), context)
+        val adapter = listAdapter(auraListData(weekAuraReportTagData.totalTagInfoList), context)
         binding.listView.adapter = adapter
         val titlePercent = String.format("%.0f", round(weekReportAuraData.reportAuraInfoList[0].auraRate.toDouble())) + "%"
         // 기본값 week 로설정

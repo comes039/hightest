@@ -5,8 +5,8 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.highcharttest.R
-import com.example.highcharttest.adaptor.PieAllListAdapter
-import com.example.highcharttest.data.pieAllListData
+import com.example.highcharttest.adaptor.allListAdapter
+import com.example.highcharttest.data.auraAllListData
 import com.example.highcharttest.data.week
 import com.example.highcharttest.data.weekAuraReportTagData
 import com.example.highcharttest.data.weekReportAuraData
@@ -29,7 +29,8 @@ class AllRecordActivity : AppCompatActivity() {
         binding.icoArrowL.setOnClickListener {
             onBackPressed()
         }
-        val adapter = PieAllListAdapter(pieAllListData(weekAuraReportTagData.totalTagInfoList), this)
+        val adapter =
+            allListAdapter(auraAllListData(weekAuraReportTagData.totalTagInfoList), this)
         listView.adapter = adapter
     }
 }

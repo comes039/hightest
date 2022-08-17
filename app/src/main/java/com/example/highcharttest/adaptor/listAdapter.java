@@ -16,12 +16,12 @@ import com.example.highcharttest.chart.data.SampleData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieListAdapter extends BaseAdapter {
+public class listAdapter extends BaseAdapter {
 
 	private List<SampleData> sampleDataList;
 	public Context context;
 
-	public PieListAdapter(@NonNull List<SampleData> sampleDataList, Context context) {
+	public listAdapter(@NonNull List<SampleData> sampleDataList, Context context) {
 		this.sampleDataList = new ArrayList<>(sampleDataList);
 		this.context = context;
 	}
@@ -62,6 +62,9 @@ public class PieListAdapter extends BaseAdapter {
 				break;
 			case 4:
 				vh.color.setBackgroundResource(R.drawable.box_gray);
+				break;
+			case 5:
+				vh.color.setBackgroundResource(R.drawable.box_orange);
 				break;
 			default:
 				vh.color.setBackgroundResource(R.drawable.box_white);

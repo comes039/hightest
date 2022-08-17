@@ -27,6 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginStart="40dp"
+                    android:textFontWeight="500"
                     android:text="@string/report_aura_date"
                     android:textSize="12sp"
                     android:textAlignment="textStart"
@@ -45,6 +46,7 @@
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
                     android:textColor="#000000" />
+
             <ProgressBar
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -96,6 +98,7 @@
                         android:gravity="top|center" />
 
             </RelativeLayout>
+
             <TextView
                     android:id="@+id/bar_date"
                     android:layout_width="match_parent"
@@ -107,6 +110,7 @@
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
                     android:textColor="#888888" />
+
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,6 +130,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_height="277dp"
                     android:layout_marginTop="40dp" />
+
             <RelativeLayout
                     android:id="@+id/info_legend"
                     android:layout_width="match_parent"
@@ -133,7 +138,8 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="46dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="40dp"
                     android:background="@drawable/info_legend">
 
                 <View
@@ -259,28 +265,41 @@
                         android:gravity="end" />
 
 
-
             </RelativeLayout>
-            <RelativeLayout
+
+            <HorizontalScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                 <RelativeLayout
-                        android:id="@+id/some_id"
-                        android:layout_width="216dp"
-                        android:layout_height="142dp"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginStart="20dp"
-                        android:background="@drawable/some_id" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
 
-                <RelativeLayout
-                        android:layout_width="216dp"
-                        android:layout_height="142dp"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginStart="246dp"
-                        android:gravity="end"
-                        android:background="@drawable/some_id2" />
-            </RelativeLayout>
+                    <RelativeLayout
+                            android:id="@+id/other_symptom_period"
+                            android:layout_width="216dp"
+                            android:layout_height="142dp"
+                            android:layout_marginStart="20dp"
+                            android:background="@drawable/other_symptom_period" />
+
+                    <RelativeLayout
+                            android:id="@+id/before_other_symptom_period"
+                            android:layout_width="216dp"
+                            android:layout_height="142dp"
+                            android:layout_marginStart="246dp"
+                            android:background="@drawable/other_symptom_period" />
+
+                    <RelativeLayout
+                            android:id="@+id/other_symptom_period_count"
+                            android:layout_width="216dp"
+                            android:layout_height="142dp"
+                            android:layout_marginStart="472dp"
+                            android:background="@drawable/other_symptom_period" />
+                </RelativeLayout>
+            </HorizontalScrollView>
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

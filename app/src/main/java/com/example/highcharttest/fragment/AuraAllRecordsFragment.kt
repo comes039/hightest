@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.highcharttest.R
-import com.example.highcharttest.adaptor.PieAllListAdapter
-import com.example.highcharttest.data.pieAllListData
+import com.example.highcharttest.adaptor.allListAdapter
+import com.example.highcharttest.data.auraAllListData
 import com.example.highcharttest.data.week
 import com.example.highcharttest.data.weekAuraReportTagData
 import com.example.highcharttest.data.weekReportAuraData
@@ -26,7 +26,8 @@ class AuraAllRecordsFragment : Fragment() {
         binding = ReportAuraAllRecordsBinding.inflate(layoutInflater)
         binding.allRecordDate.text = getString(R.string.all_record_date, week.startDate, week.endDate)
         val context = this.context
-        val adapter = PieAllListAdapter(pieAllListData(weekAuraReportTagData.totalTagInfoList), context)
+        val adapter =
+            allListAdapter(auraAllListData(weekAuraReportTagData.totalTagInfoList), context)
         binding.device.text = getString(R.string.device, weekReportAuraData.reportAuraInfoList[0].auraRate) +"%"
         binding.boxActive.setOnClickListener {
             requireActivity().onBackPressed()
