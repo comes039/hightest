@@ -68,7 +68,7 @@
 
             <RelativeLayout
                     android:id="@+id/info_legend"
-                    android:layout_width="320dp"
+                    android:layout_width="match_parent"
                     android:layout_height="134dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
@@ -179,6 +179,7 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="20dp"
                         android:text="@string/seizures"
@@ -186,7 +187,7 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
                 <TextView
                         android:id="@+id/no_aura_confirmed"
@@ -194,6 +195,7 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="46dp"
                         android:text="@string/seizures"
@@ -201,7 +203,7 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
                 <TextView
                         android:id="@+id/aura_unknown"
@@ -209,6 +211,7 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="72dp"
                         android:text="@string/seizures"
@@ -216,7 +219,7 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
                 <TextView
                         android:id="@+id/no_record"
@@ -224,6 +227,7 @@
                         android:layout_height="16dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="242dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="98dp"
                         android:text="@string/seizures"
@@ -231,7 +235,7 @@
                         android:lineSpacingExtra="0sp"
                         android:translationY="-0.19sp"
                         android:fontFamily="@font/dmsansregular"
-                        android:gravity="start" />
+                        android:gravity="end" />
 
             </RelativeLayout>
 
@@ -270,10 +274,10 @@
                     android:layout_marginRight="90dp" />
 
             <RelativeLayout
-                    android:layout_width="320dp"
+                    android:layout_width="match_parent"
                     android:layout_height="381dp"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginEnd="45dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/list_legend">
 
@@ -307,8 +311,7 @@
                         android:translationY="-0.89sp"
                         android:textFontWeight="500"
                         android:layout_marginTop="341dp"
-                        android:layout_marginStart="97.5dp"
-                        android:gravity="top" />
+                        android:gravity="top|center" />
 
             </RelativeLayout>
 

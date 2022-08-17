@@ -39,14 +39,11 @@
 
     <TextView
             android:id="@+id/pie_percent"
-            android:layout_width="70dp"
+            android:layout_width="match_parent"
             android:layout_height="22dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="210dp"
-            android:layout_alignParentTop="true"
             android:text="@string/some_id"
+            android:layout_marginStart="242dp"
             android:textAppearance="@style/some_id"
-            android:lineSpacingExtra="0sp"
             android:gravity="right|top" />
 
     <TextView

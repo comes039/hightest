@@ -27,7 +27,13 @@ class OtherSymptomsFragment : Fragment() {
         binding.listView.adapter = adapter
         binding.date.text = getString(R.string.report_aura_date, week.startDate, week.endDate)
         binding.title.text = getString(R.string.other_symptoms_text,weekReportOtherSymptomData.totalList[0].name)
-
+        binding.barDate.text =  getString(R.string.report_aura_date, week.startDate, week.endDate)
+        binding.boxNameOne.text = weekReportOtherSymptomData.totalList[0].name
+        binding.boxNameTwo.text = weekReportOtherSymptomData.totalList[1].name
+        binding.boxNameThree.text = weekReportOtherSymptomData.totalList[2].name
+        binding.entryOne.text = weekReportOtherSymptomData.totalList[0].count.toString() + " entries"
+        binding.entryTwo.text = weekReportOtherSymptomData.totalList[1].count.toString() + " entries"
+        binding.entryThree.text = weekReportOtherSymptomData.totalList[2].count.toString() + " entries"
         return binding.root
     }
 

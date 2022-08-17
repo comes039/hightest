@@ -36,5 +36,6 @@
     <string name="button_aura">Aura</string>
     <string name="button_symptoms">other symptoms</string>
     <string name="other_symptoms_text">Your most frequent\nother symptom was\n%1$s</string>
+    <string name="during_this">During this  \nperiod</string>
 
 </resources>
