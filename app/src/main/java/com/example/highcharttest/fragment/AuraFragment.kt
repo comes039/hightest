@@ -46,8 +46,7 @@ class AuraFragment : Fragment() {
             weekReportAuraData.seizureTotalCount
         )
         binding.auraConfirmed.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[0].count)
-        binding.noAuraConfirmed.text =
-            getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[1].count)
+        binding.noAuraConfirmed.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[1].count)
         binding.auraUnknown.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[2].count)
         binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[3].count)
         binding.pieTitle.text = getString(R.string.pie_string, weekAuraReportTagData.totalTagInfoList[0].auraTag)
@@ -70,6 +69,5 @@ class AuraFragment : Fragment() {
         binding.pieChart.addFont(R.font.dmsansregular)
         binding.pieChart.options = PieChart.options(pieChartData(response.totalTagInfoList))
     }
-
 
 }
