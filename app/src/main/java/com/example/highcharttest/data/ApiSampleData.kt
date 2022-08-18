@@ -113,8 +113,10 @@ val threeAuraReportTagData = ReportAuraTagResponse(
  * REPORT OTHER SYMPTOM SAMPLE DATA
  */
 val weekReportOtherSymptomData = ReportOtherSymptomResponse(
-    17.0,
-    9.5,
+    47,
+    67,
+    6.7,
+    9.6,
     listOf(
         ReportOtherSymptomInfo("Memory issue", 23, 48.9),
         ReportOtherSymptomInfo("Weight change", 11, 23.4),

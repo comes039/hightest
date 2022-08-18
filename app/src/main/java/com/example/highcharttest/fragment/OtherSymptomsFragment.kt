@@ -34,6 +34,10 @@ class OtherSymptomsFragment : Fragment() {
         binding.entryOne.text = weekReportOtherSymptomData.totalList[0].count.toString() + " entries"
         binding.entryTwo.text = weekReportOtherSymptomData.totalList[1].count.toString() + " entries"
         binding.entryThree.text = weekReportOtherSymptomData.totalList[2].count.toString() + " entries"
+        binding.entiresCount.text = getString(R.string.entries_count, weekReportOtherSymptomData.totalCountAvg)
+        binding.beforeEntiresCount.text = getString(R.string.entries_count, weekReportOtherSymptomData.beforeTotalCountAvg)
+        binding.symptomsCount.text = getString(R.string.symptoms_count, weekReportOtherSymptomData.totalCount)
+        binding.beforeSymptomsCount.text = getString(R.string.symptoms_count, weekReportOtherSymptomData.beforeTotalCount)
         return binding.root
     }
 

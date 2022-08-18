@@ -32,7 +32,8 @@
                     android:textSize="12sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
-                    android:textColor="#888888" />
+                    android:textColor="#888888"
+                    tools:ignore="TextContrastCheck" />
 
             <TextView
                     android:id="@+id/title"
@@ -95,7 +96,8 @@
                         android:translationY="-0.89sp"
                         android:textFontWeight="500"
                         android:layout_marginTop="341dp"
-                        android:gravity="top|center" />
+                        android:gravity="top|center"
+                        tools:ignore="TextContrastCheck" />
 
             </RelativeLayout>
 
@@ -109,7 +111,8 @@
                     android:textSize="12sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
-                    android:textColor="#888888" />
+                    android:textColor="#888888"
+                    tools:ignore="TextContrastCheck" />
 
             <TextView
                     android:layout_width="match_parent"
@@ -117,7 +120,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginStart="40dp"
                     android:textFontWeight="500"
-                    android:text="Other symptoms trend"
+                    android:text="@string/other_symptoms_trend"
                     android:textSize="24sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
@@ -138,7 +141,6 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="40dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/info_legend">
 
@@ -273,6 +275,8 @@
             <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="80dp"
                     android:orientation="horizontal">
 
                 <RelativeLayout
@@ -285,7 +289,7 @@
                             android:layout_width="216dp"
                             android:layout_height="142dp"
                             android:layout_marginStart="20dp"
-                            android:background="@drawable/other_symptom_period" >
+                            android:background="@drawable/other_symptom_period">
 
                         <TextView
                                 android:id="@+id/during_this"
@@ -302,31 +306,30 @@
                                 android:gravity="top" />
 
                         <TextView
-                                android:id="@+id/other_symptom_entries"
+                                android:id="@+id/entires_count"
                                 android:layout_width="match_parent"
                                 android:layout_height="22dp"
                                 android:layout_marginTop="80dp"
                                 android:layout_marginStart="20dp"
-                                android:text="5.4 entries"
+                                android:text="@string/entries_count"
                                 android:textFontWeight="500"
                                 android:textAppearance="@style/other_symptom_entries"
                                 android:lineSpacingExtra="0sp"
                                 android:gravity="top" />
+
                         <TextView
-                                android:id="@+id/daily_avg_"
-                                android:layout_width="53dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginLeft="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="20dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_marginTop="106dp"
                                 android:textFontWeight="500"
-                                android:text="Daily avg."
+                                android:text="@string/daily_avg"
                                 android:textAppearance="@style/daily_avg_"
                                 android:lineSpacingExtra="0sp"
                                 android:translationY="-0.19sp"
-                                android:gravity="top"
-                                />
+                                android:gravity="top" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -344,34 +347,33 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_marginTop="20dp"
-                                android:text="During previous\nperiod"
+                                android:text="@string/during_previous_period"
                                 android:textAppearance="@style/during_this"
                                 android:lineSpacingExtra="2sp"
                                 android:translationY="-0.89sp"
                                 android:gravity="top" />
 
                         <TextView
-                                android:id="@+id/other_symptom_entries2"
+                                android:id="@+id/before_entires_count"
                                 android:layout_width="match_parent"
                                 android:layout_height="22dp"
                                 android:layout_marginTop="80dp"
                                 android:layout_marginStart="20dp"
-                                android:text="5.4 entries"
+                                android:text="@string/entries_count"
                                 android:textFontWeight="500"
                                 android:textAppearance="@style/other_symptom_entries"
                                 android:lineSpacingExtra="0sp"
                                 android:gravity="top" />
 
                         <TextView
-                                android:id="@+id/daily_avg_3"
-                                android:layout_width="53dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="16dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginLeft="20dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="20dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_marginTop="106dp"
                                 android:textFontWeight="500"
-                                android:text="Daily avg."
+                                android:text="@string/daily_avg"
                                 android:textAppearance="@style/daily_avg_"
                                 android:lineSpacingExtra="0sp"
                                 android:translationY="-0.19sp"
@@ -380,10 +382,98 @@
 
                     <RelativeLayout
                             android:id="@+id/other_symptom_period_count"
-                            android:layout_width="320dp"
+                            android:layout_width="371dp"
                             android:layout_height="142dp"
                             android:layout_marginStart="472dp"
-                            android:background="@drawable/other_symptom_period" />
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/other_symptom_period2">
+
+                        <TextView
+                                android:layout_width="120dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="20dp"
+                                android:text="@string/during_this"
+                                android:textAppearance="@style/during_this"
+                                android:lineSpacingExtra="2sp"
+                                android:translationY="-0.89sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:id="@+id/during_prev"
+                                android:layout_width="120dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="180dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="20dp"
+                                android:text="@string/during_previous_period"
+                                android:textAppearance="@style/during_this"
+                                android:lineSpacingExtra="2sp"
+                                android:translationY="-0.89sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:id="@+id/symptoms_count"
+                                android:layout_width="match_parent"
+                                android:layout_height="22dp"
+                                android:layout_marginTop="80dp"
+                                android:layout_marginStart="20dp"
+                                android:text="@string/symptoms_count"
+                                android:textAppearance="@style/other_symptom_entries"
+                                android:lineSpacingExtra="0sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:id="@+id/before_symptoms_count"
+                                android:layout_width="match_parent"
+                                android:layout_height="22dp"
+                                android:layout_marginTop="80dp"
+                                android:layout_marginStart="180dp"
+                                android:text="@string/symptoms_count"
+                                android:textAppearance="@style/other_symptom_entries"
+                                android:lineSpacingExtra="0sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="16dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="106dp"
+                                android:textFontWeight="500"
+                                android:text="@string/total_types"
+                                android:textAppearance="@style/daily_avg_"
+                                android:lineSpacingExtra="0sp"
+                                android:translationY="-0.19sp"
+                                android:gravity="top" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="16dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="180dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="106dp"
+                                android:textFontWeight="500"
+                                android:text="@string/total_types"
+                                android:textAppearance="@style/daily_avg_"
+                                android:lineSpacingExtra="0sp"
+                                android:translationY="-0.19sp"
+                                android:gravity="top" />
+
+                        <View
+                                android:id="@+id/ico_arrow_l"
+                                android:layout_width="10.4dp"
+                                android:layout_height="16.4dp"
+                                android:layout_marginStart="330dp"
+                                android:layout_marginEnd="20.2dp"
+                                android:layout_marginTop="66.7dp"
+                                android:background="@drawable/ico_arrow3_gray1_right_default" />
+                    </RelativeLayout>
                 </RelativeLayout>
             </HorizontalScrollView>
 

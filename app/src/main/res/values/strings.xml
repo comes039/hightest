@@ -37,5 +37,11 @@
     <string name="button_symptoms">other symptoms</string>
     <string name="other_symptoms_text">Your most frequent\nother symptom was\n%1$s</string>
     <string name="during_this">During this  \nperiod</string>
+    <string name="other_symptoms_trend">Other symptoms trend</string>
+    <string name="during_previous_period">During previous\nperiod</string>
+    <string name="total_types">Total types</string>
+    <string name="daily_avg">Daily avg.</string>
+    <string name="symptoms_count">%1$s symptoms</string>
+    <string name="entries_count">%1$s entries</string>
 
 </resources>
