@@ -47,16 +47,65 @@
                     android:textAlignment="textStart"
                     android:fontFamily="@font/dmsansregular"
                     android:textColor="#000000" />
-
-            <ProgressBar
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="40dp"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:progress="25"
-                    android:id="@+id/progress1" />
+                    android:layout_height="wrap_content">
+
+                <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/gradient_progress5"
+                        android:progress="100"
+                        android:id="@+id/progress5" />
+                <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/gradient_progress4"
+                        android:progress="91"
+                        android:id="@+id/progress4" />
+
+                <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/gradient_progress3"
+                        android:progress="83"
+                        android:id="@+id/progress3" />
+
+                <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progress="70"
+                        android:progressDrawable="@drawable/gradient_progress2"
+                        android:id="@+id/progress2" />
+
+                <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="40dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/gradient_progress1"
+                        android:progress="54"
+                        android:id="@+id/progress1" />
+            </RelativeLayout>
+
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -127,7 +176,7 @@
                     android:textColor="#000000" />
 
             <com.highsoft.highcharts.core.HIChartView
-                    android:id="@+id/stacked_column_chart"
+                    android:id="@+id/column_chart"
                     android:layout_width="match_parent"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
