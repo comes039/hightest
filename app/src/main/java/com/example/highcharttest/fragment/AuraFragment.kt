@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
 import com.example.highcharttest.activity.AllRecordActivity
 import com.example.highcharttest.adaptor.listAdapter
-import com.example.highcharttest.chart.PackedBubbleChartTest
+import com.example.highcharttest.chart.AuraPackedBubbleChart
 import com.example.highcharttest.chart.PieChart
 import com.example.highcharttest.chart.data.ReportAuraResponse
 import com.example.highcharttest.chart.data.ReportAuraTagResponse
@@ -62,7 +62,7 @@ class AuraFragment : Fragment() {
 
     private fun packedBubbleChart(response: ReportAuraResponse) {
         binding.bubbleChart.addFont(R.font.dmsansregular)
-        binding.bubbleChart.options = PackedBubbleChartTest.options(packedBubbleChartData(response))
+        binding.bubbleChart.options = AuraPackedBubbleChart.options(packedBubbleChartData(response))
     }
 
     private fun pieChart(response: ReportAuraTagResponse) {

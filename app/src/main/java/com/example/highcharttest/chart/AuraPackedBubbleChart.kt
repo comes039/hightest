@@ -9,7 +9,7 @@ import com.highsoft.highcharts.core.HIFunction
 import java.util.*
 
 
-class PackedBubbleChartTest {
+class AuraPackedBubbleChart {
 
     companion object {
 
