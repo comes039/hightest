@@ -27,6 +27,7 @@ class BasicColumnChart {
 
             val chart = HIChart()
             chart.type = "column"
+            chart.backgroundColor = HIColor.initWithHexValue("F8F8F8FF")
             chart.marginTop = 50
             options.chart = chart
 
@@ -50,6 +51,7 @@ class BasicColumnChart {
                 offset = 0
                 rotation = 0
                 y = -20
+                x = -24
             }
             yAxis.tickInterval = 1
             yAxis.gridLineWidth = 1
@@ -89,7 +91,7 @@ class BasicColumnChart {
 
             val dataList = ArrayList<HISeries>()
             columnData.columnData.forEach {
-                val data = HISeries()
+                val data = HIColumn()
                 val stops = LinkedList<HIStop>()
                 stops.add(HIStop(0f, HIColor.initWithHexValue(it.gradientColor.start)))
                 stops.add(HIStop(1f, HIColor.initWithHexValue(it.gradientColor.end)))
@@ -97,13 +99,14 @@ class BasicColumnChart {
                 data.custom = HashMap<String, Any>()
                 data.custom["value"] = it.color
                 data.name = it.name
+                data.borderRadius = 3
                 data.data = it.inputData
                 data.tooltip = HITooltip()
                 data.tooltip.useHTML = true
                 data.tooltip.backgroundColor = HIColor.initWithHexValue("000000")
                 data.tooltip.headerFormat = ""
-                data.tooltip.pointFormat = "<div style=\"font-size:12px;color:#FFFFFF\">{series.name}</div>" +
-                        "<div>" +
+                data.tooltip.pointFormat = "<div>" +
+                        "<div style=\"font-size:12px;color:#FFFFFF\">{series.name}</div>" +
                         "<li style=\"font-size:12px;color:#{series.options.custom.value}\">" +
                         "<span style=\"font-size:12px;color:#FFFFFF\">{point.y}</span>" +
                         "</li>" +
@@ -115,13 +118,14 @@ class BasicColumnChart {
             spline.data = columnData.splineData
             spline.marker = HIMarker()
             spline.marker.lineWidth = 1
-            spline.marker.fillColor = HIColor.initWithHexValue("CCCCCC")
+            spline.marker.fillColor = HIColor.initWithHexValue("888888")
             spline.color = HIColor.initWithHexValue("00ff0000")
             spline.tooltip = HITooltip()
             spline.tooltip.useHTML = true
+//            spline.tooltip.backgroundColor = HIColor.initWithHexValue("000000")
             spline.tooltip.headerFormat = ""
             spline.tooltip.pointFormat =
-                "<div style=\"width:49px;text-align:center\"><span style=\"font-size:10px;color:#FFFFFF\">{series.name}</span></div>"
+                "<div style=\"width:49px;text-align:center;\"><span style=\"font-size:10px;color:#FFFFFF\">{series.name}</span></div>"
             spline.tooltip.style = HICSSObject()
             spline.tooltip.style.width = 100
 //            spline.marker.lineColor = "00ff0000"
