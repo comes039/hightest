@@ -5,6 +5,7 @@
     <string name="report_aura_date">%1$s ~ %2$s</string>
     <string name="aura_comment">You entered %1$s aura out of %2$s seizures</string>
     <string name="aura_confir">Aura confirmed</string>
+    <string name="box_name">%1$s</string>
     <string name="seizures">%1$s seizures</string>
     <string name="no_aura_con">No aura confirmed</string>
     <string name="aura_unknown">Aura unknown</string>
@@ -12,7 +13,7 @@
     <string name="pie_string">%1$s \nwas the most\nseizure-relate aura</string>
     <string name="double_vision">Double vision</string>
     <string name="some_id">73%</string>
-    <string name="entries">45 entries</string>
+    <string name="entries">%1$s entries</string>
     <string name="view_all_re">View all records ></string>
     <string name="seizures_text">%1$s of seizures\noccured with aura</string>
     <string name="did_you_hav">All records</string>

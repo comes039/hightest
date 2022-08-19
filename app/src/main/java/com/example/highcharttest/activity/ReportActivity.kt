@@ -30,7 +30,11 @@ class ReportActivity : AppCompatActivity() {
         viewPager.adapter = pagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = if (position == 0) "Aura" else if (position == 1) "Other Symptoms" else ""
+            when(position){
+                0-> tab.text = "Aura"
+                1-> tab.text = "Other Symptoms"
+                else -> tab.text = ""
+            }
         }.attach()
 
         println("tab_index = $tabIndex")
