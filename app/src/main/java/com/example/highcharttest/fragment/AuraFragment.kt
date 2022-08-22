@@ -1,13 +1,11 @@
 package com.example.highcharttest.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
-import com.example.highcharttest.activity.AllRecordActivity
 import com.example.highcharttest.adaptor.listAdapter
 import com.example.highcharttest.chart.AuraPackedBubbleChart
 import com.example.highcharttest.chart.PieChart
@@ -20,7 +18,7 @@ import kotlin.math.round
 class AuraFragment : Fragment() {
 
     private lateinit var binding: ReportAuraBinding
-
+    private lateinit var viewAllRecord : AuraAllRecordsFragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,8 +49,8 @@ class AuraFragment : Fragment() {
         binding.noRecord.text = getString(R.string.seizures, weekReportAuraData.reportAuraInfoList[3].count)
         binding.pieTitle.text = getString(R.string.pie_string, weekAuraReportTagData.totalTagInfoList[0].auraTag)
         binding.viewAllRe.setOnClickListener {
-            val intent = Intent(getContext(), AllRecordActivity::class.java)
-            startActivity(intent)
+            viewAllRecord = AuraAllRecordsFragment()
+            viewAllRecord.show(requireActivity().supportFragmentManager,viewAllRecord.tag)
         }
         packedBubbleChart(weekReportAuraData)
         pieChart(weekAuraReportTagData)

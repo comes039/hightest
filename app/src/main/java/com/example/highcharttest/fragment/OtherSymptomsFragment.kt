@@ -1,5 +1,6 @@
 package com.example.highcharttest.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,7 +46,10 @@ class OtherSymptomsFragment : Fragment() {
         binding.beforeEntiresCount.text = getString(R.string.entries_count, weekReportOtherSymptomData.beforeTotalCountAvg)
         binding.symptomsCount.text = getString(R.string.symptoms_count, weekReportOtherSymptomData.totalCount)
         binding.beforeSymptomsCount.text = getString(R.string.symptoms_count, weekReportOtherSymptomData.beforeTotalCount)
-
+        binding.viewAllRe.setOnClickListener {
+//            val intent = Intent(getContext(), AllRecordActivity::class.java)
+//            startActivity(intent)
+        }
         columnChart()
         return binding.root
     }
