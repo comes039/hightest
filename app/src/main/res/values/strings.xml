@@ -32,7 +32,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="all_record_date">%1$s ~ %2$s</string>
     <string name="no_aura_text">No aura recorded\nduring this period.\nAdd any missed record!</string>
+    <string name="no_other_symptoms_text">No other symptoms \nrecord during \nthis period.\nAdd any missed record!</string>
+    <string name="other_symptoms_text_no_seizure">Fredrick, Wonderful!\nThere was no seizure to \nrecord other symptoms\nduring this period!</string>
     <string name="no_aura_comment">Your input enables us to analyze and\ngenerate reports on your aura pattern.</string>
+    <string name="no_other_symptoms_comment">Your input enables us to generate reports\nthat may help you and your doctor\nunderstand your non-seizure symptoms</string>
+    <string name="other_symptoms_comment_no_seizure">Keep it going!\nZero is always on your side!</string>
     <string name="no_aura_button">Go to record</string>
     <string name="button_aura">Aura</string>
     <string name="button_symptoms">other symptoms</string>
@@ -44,5 +48,6 @@
     <string name="daily_avg">Daily avg.</string>
     <string name="symptoms_count">%1$s symptoms</string>
     <string name="entries_count">%1$s entries</string>
+    <string name="other_symptoms_no_seizure">Any missed records?\nRecord it now!</string>
 
 </resources>

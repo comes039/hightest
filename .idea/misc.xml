@@ -26,6 +26,7 @@
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/gradient_progress3.xml" value="0.2535" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/gradient_progress4.xml" value="0.2535" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/gradient_progress5.xml" value="0.2535" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/ic_baseline_arrow_drop_up_24.xml" value="0.263" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2895" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/ico_arrow_l.xml" value="0.1665" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/info.xml" value="0.1675" />
@@ -34,8 +35,11 @@
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/no_aura_button.xml" value="0.2895" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/other_symptom_period.xml" value="0.3115" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/other_symptom_period2.xml" value="0.3125" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/rectangle_2.xml" value="0.263" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/rectangle_9.xml" value="0.263" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/some_id.xml" value="0.303" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/some_id2.xml" value="0.303" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/drawable/vector.xml" value="0.263" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/font/dssan_font_family.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/activity_all_record.xml" value="0.15104166666666666" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/activity_aura.xml" value="0.153125" />
@@ -46,12 +50,15 @@
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/bubble_chart.xml" value="0.20150788211103496" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/fragment_report.xml" value="0.153125" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/no_report_aura.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/no_report_other_symptoms.xml" value="0.26507054296707994" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/pie_item.xml" value="0.3768352365415987" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/pie_list.xml" value="0.25679347826086957" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_aura.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_aura_all_records.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_fragment.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_other_symptoms.xml" value="0.37595628415300547" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_other_symptoms_no_seizure.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/report_other_symptoms_unrecorded.xml" value="0.26507054296707994" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/layout/stacked_column_fragment.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.321" />
         <entry key="..\:/Users/kanghahyeong/AndroidStudioProjects/hightest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.321" />
