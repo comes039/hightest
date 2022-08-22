@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.highcharttest.R
 import com.example.highcharttest.data.week
 import com.example.highcharttest.databinding.ReportOtherSymptomsNoSeizureBinding
-import com.example.highcharttest.databinding.ReportOtherSymptomsUnrecordedBinding
 
 class ReportOtherSymptomsNoSeizureFragment : Fragment() {
 
