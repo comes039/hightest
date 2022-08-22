@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".activity.MainActivity">
 
 
@@ -76,12 +77,13 @@
 
                 <TextView
                         android:id="@+id/any_missed_"
-                        android:layout_width="139dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="40dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="16dp"
+                        android:textFontWeight="500"
                         android:text="@string/other_symptoms_no_seizure"
                         android:textAppearance="@style/double_visi"
                         android:lineSpacingExtra="2sp"

@@ -9,15 +9,22 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.highcharttest.databinding.ActivityReportBinding
-import com.example.highcharttest.fragment.AuraFragment
-import com.example.highcharttest.fragment.OtherSymptomsFragment
+import com.example.highcharttest.fragment.*
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ReportActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
     private lateinit var binding: ActivityReportBinding
     lateinit var context: Context
-    val fragmentList = listOf(AuraFragment(), OtherSymptomsFragment())
+    val fragmentList = listOf(
+        AuraFragment(),
+        OtherSymptomsFragment(),
+        AuraAllRecordsFragment(),
+        NoReportAuraFragment(),
+        ReportOtherSymptomsNoSeizureFragment(),
+        ReportOtherSymptomsUnrecordedFragment()
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReportBinding.inflate(layoutInflater)
@@ -30,10 +37,14 @@ class ReportActivity : AppCompatActivity() {
         viewPager.adapter = pagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            when(position){
-                0-> tab.text = "Aura"
-                1-> tab.text = "Other Symptoms"
-                else -> tab.text = ""
+            when (position) {
+                0 -> tab.text = "Aura"
+                1 -> tab.text = "Other Symptoms"
+                2 -> tab.text = "Aura All"
+                3 -> tab.text = "Aura No"
+                4 -> tab.text = "Other Symptoms No seizure"
+                5 -> tab.text = "Other Symptoms Unrecorded"
+                else -> tab.text = "Other $position"
             }
         }.attach()
 
